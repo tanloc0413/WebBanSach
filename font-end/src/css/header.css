@@ -1,0 +1,100 @@
+#header {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    display: flex;
+    padding: 10px 0;
+}
+
+#blk_header {
+    width: 100%;
+    height: 100%;
+    padding: 0 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 3%;
+}
+
+#blk_logo, #blk_search, #blk_user, .blk_user-icon {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo */
+#blk_logo {
+    width: 10%;
+    height: auto;
+    justify-content: start;
+}
+
+#logo-img {
+    width: max-content;
+    height: 40px;
+}
+
+/* Input Tìm Kiếm */
+#blk_search {
+    width: 45%;
+    height: 35px;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1.5px #515151 solid;
+}
+
+#input-search {
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    outline: none;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+#blk_search-icon {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search {
+    width: 4rem;
+    height: 1.85rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff1111;
+    border-radius: 5px;
+    margin-right: 2.5px;
+}
+
+.search-icon {
+    font-size: 25px;
+    color: #fff;    
+}
+
+/* Tài Khoản */
+#blk_user {
+    width: 25%;
+    justify-content: end;
+    flex-direction: row;
+    column-gap: 2rem;
+}
+
+.blk_user-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.user-icon {
+    font-size: 1.4rem;
+}
+
+.title_text-icons {
+    font-size: 12px;
+}
