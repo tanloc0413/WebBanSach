@@ -1,5 +1,8 @@
 package com.fit.backend.model;
 
+import lombok.Data;
+
+@Data
 public class Image {
     private int idImage;
     private String nameImage;

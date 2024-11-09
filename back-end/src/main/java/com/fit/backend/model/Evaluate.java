@@ -1,5 +1,8 @@
 package com.fit.backend.model;
 
+import lombok.Data;
+
+@Data
 public class Evaluate {
     private long idEvaluate;
     private float ratingPoints; // điểm xếp hạng
