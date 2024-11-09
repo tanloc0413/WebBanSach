@@ -1,12 +1,14 @@
-package com.fit.backend.model;
-
-import lombok.Data;
-
-@Data
-public class CartDetail {
-    private long cartDetail; //
-    private int quantity; // số lượng
-    private double price; // giá bán
-    private Book book;
-    private Cart cart;
-}
+//package com.fit.backend.model;
+//
+//import jakarta.persistence.Entity;
+//import lombok.Data;
+//
+//@Entity
+//@Data
+//public class CartDetail {
+//    private long cartDetail; //
+//    private int quantity; // số lượng
+//    private double price; // giá bán
+//    private Book book;
+//    private Cart cart;
+//}
