@@ -5,11 +5,11 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "Image")
+@Table(name = "image")
 public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "img_ID")
+    @Column(name = "img_id")
     private int idImage;
 
     @Column(name = "img_name")
@@ -30,6 +30,6 @@ public class Image {
             CascadeType.DETACH, CascadeType.REFRESH,
 
     })
-    @JoinColumn(name = "book_ID", nullable = false)
+    @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 }

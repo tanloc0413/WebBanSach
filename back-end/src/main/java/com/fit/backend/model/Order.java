@@ -7,11 +7,11 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "Order")
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_ID")
+    @Column(name = "order_id")
     private int idOrder; // mã đơn hàng
 
     @Column(name = "date_created")
@@ -26,10 +26,16 @@ public class Order {
     @Column(name = "total_product")
     private double totalProduct; // tổng tiền sản phẩm
 
-    @Column(name = "total_shipping")
-    private double totalShipping; // tổng tiền giao hàng
+    @Column(name = "total_amount")
+    private double totalAmount; // tổng tiền cần thanh toán
 
-    @OneToMany(mappedBy = "orderDetail", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Column(name = "payment_cost")
+    private double paymentCost; // chi phí thanh toán
+
+    @Column(name = "shipping_cost")
+    private double shippingCost; // chi phí giao hàng
+
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<OrderDetail> listOrderDetail;
 
     @ManyToOne(cascade = {
@@ -37,7 +43,7 @@ public class Order {
             CascadeType.DETACH, CascadeType.REFRESH,
 
     })
-    @JoinColumn(name = "user_ID", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne(cascade = {
@@ -45,14 +51,13 @@ public class Order {
             CascadeType.DETACH, CascadeType.REFRESH,
 
     })
-    @JoinColumn(name = "payment_method", nullable = false)
+    @JoinColumn(name = "pm_id", nullable = false)
     private PaymentMethod paymentMethod; // hình thức thanh toán
 
     @ManyToOne(cascade = {
             CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH,
-
     })
-    @JoinColumn(name = "delivery_method", nullable = false)
+    @JoinColumn(name = "dm_id", nullable = false)
     private DeliveryMethod deliveryMethod; // hình thức vận chuyển
 }

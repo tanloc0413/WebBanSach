@@ -7,22 +7,24 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "Role")
+@Table(name = "role")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "role_ID")
+    @Column(name = "role_id")
     private int idRole; // mã quyền
+
     @Column(name = "role_name")
     private String nameRole; // tên quyền
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH
     })
     @JoinTable(
             name = "role_user",
-            joinColumns = @JoinColumn(name="role_ID"),
-            inverseJoinColumns = @JoinColumn(name = "user_ID")
+            joinColumns = @JoinColumn(name="role_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     private List<User> listUser; // danh sách người dùng
 }

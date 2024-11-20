@@ -2,30 +2,28 @@ package com.fit.backend.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 
 @Entity
 @Data
-@Table(name = "category")
-public class Category {
+@Table(name = "author")
+public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "category_id")
-    private int idCategory;
+    @Column(name = "author_id")
+    private int idAuthor;
 
-    @Column(name = "category_name", length = 150)
-    private String nameCategory;
+    @Column(name = "author_name")
+    private String nameAuthor;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH
     })
     @JoinTable(
-            name = "book_genre",
-            joinColumns = @JoinColumn(name="category_id"),
+            name = "book_author",
+            joinColumns = @JoinColumn(name = "author_id"),
             inverseJoinColumns = @JoinColumn(name = "book_id")
     )
     private List<Book> listBook;

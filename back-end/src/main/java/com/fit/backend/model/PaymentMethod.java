@@ -6,14 +6,14 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "Payment_Method")
+@Table(name = "payment_method")
 public class PaymentMethod {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "paymentMethod_ID")
+    @Column(name = "pm_id")
     private int idPaymentMethod; // mã phương thức thanh toán
 
-    @Column(name = "paymentMethod_name")
+    @Column(name = "pm_name")
     private String namePaymentMethod; // tên phương thức thanh toán
 
     @Column(name = "description")

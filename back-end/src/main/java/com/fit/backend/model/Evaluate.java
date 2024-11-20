@@ -5,11 +5,11 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "Evaluate")
+@Table(name = "evaluate")
 public class Evaluate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "evaluate_ID")
+    @Column(name = "evaluate_id")
     private long idEvaluate;
 
     @Column(name = "rating_points")
@@ -23,15 +23,14 @@ public class Evaluate {
             CascadeType.DETACH, CascadeType.REFRESH,
 
     })
-    @JoinColumn(name = "book_ID", nullable = false)
+    @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
     @ManyToOne(cascade = {
             CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH,
-
     })
-    @JoinColumn(name = "user_ID", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
 

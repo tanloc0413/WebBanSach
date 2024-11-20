@@ -7,18 +7,15 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name="Book")
+@Table(name="book")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="book_ID")
+    @Column(name="book_id")
     private int idBook; // mã sách
 
-    @Column(name = "book_title")
+    @Column(name = "book_name")
     private String nameBook; // tên sách
-
-    @Column(name = "author")
-    private String nameAuthor; // tên tác giả
 
     @Column(name = "descripstion", columnDefinition = "text")
     private String description; // mô tả
@@ -32,17 +29,28 @@ public class Book {
     @Column(name = "quantity")
     private int quantity; // số lượng
 
-    @Column(name = "evaluate")
-    private Double evaluate; // đánh giá
+    @Column(name = "average_rating")
+    private Double averageRating; // đánh giá
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH
     })
     @JoinTable(
-            name = "category_book",
-            joinColumns = @JoinColumn(name="book_ID"),
-            inverseJoinColumns = @JoinColumn(name = "category_ID")
+            name = "book_author",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id")
+    )
+    private List<Author> listAuthor; // tên tác giả
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {
+            CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH
+    })
+    @JoinTable(
+            name = "book_genre", // tham gia vào bảng thể loại sách
+            joinColumns = @JoinColumn(name="book_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
     )
     List<Category> listCategory; // danh sách thể loại
 

@@ -5,12 +5,12 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "Order_Detail")
+@Table(name = "order_detail")
 public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "orderDetail")
-    private long orderDetail;
+    @Column(name = "order_detail_id")
+    private long idOrderDetail;
 
     @Column(name = "quantity")
     private int quantity;
@@ -23,7 +23,7 @@ public class OrderDetail {
             CascadeType.DETACH, CascadeType.REFRESH,
 
     })
-    @JoinColumn(name = "book_ID", nullable = false)
+    @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
     @ManyToOne(cascade = {
@@ -31,6 +31,6 @@ public class OrderDetail {
             CascadeType.DETACH, CascadeType.REFRESH,
 
     })
-    @JoinColumn(name = "order_ID", nullable = false)
+    @JoinColumn(name = "order_id", nullable = false)
     private Order order;
 }

@@ -6,34 +6,34 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "User")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_ID")
+    @Column(name = "user_id")
     private int idUser; // mã người dùng
 
     @Column(name = "username")
     private String username;
 
-    @Column(name = "password", length = 512)
+    @Column(name = "password")
     private String password;
 
     @Column(name = "email")
     private String email;
 
-    @Column(name = "lastName")
+    @Column(name = "last_name")
     private String lastName; // họ và tên đệm
 //    private String middleName; // tên đệm
 
-    @Column(name = "firstName")
+    @Column(name = "first_name")
     private String firstName; // tên
 
-    @Column(name = "sex")
+    @Column(name = "sex", length = 3)
     private char sex;
 
     @Column(name = "number_phone")
-    private int numberPhone;
+    private String numberPhone;
 
     @Column(name = "shipping_address")
     private String shippingAddress; // địa chỉ giao hàng
@@ -66,8 +66,8 @@ public class User {
     })
     @JoinTable(
             name = "role_user",
-            joinColumns = @JoinColumn(name="user_ID"),
-            inverseJoinColumns = @JoinColumn(name = "role_ID")
+            joinColumns = @JoinColumn(name="user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private List<Role> listRole; // danh sách quyền
 

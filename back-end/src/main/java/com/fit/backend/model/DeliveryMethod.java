@@ -6,14 +6,14 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "Delivery_Method")
+@Table(name = "delivery_method")
 public class DeliveryMethod {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "deliveryMethod_ID")
+    @Column(name = "dm_id")
     private int idDeliveryMethod; // mã phương thức giao hàng
 
-    @Column(name = "deliveryMethod_name")
+    @Column(name = "dm_name")
     private String nameDeliveryMethod; // tên phương thức giao hàng
 
     @Column(name = "description")
@@ -26,5 +26,5 @@ public class DeliveryMethod {
             CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH,
     })
-    private List<Order> order;
+    private List<Order> listOrder;
 }

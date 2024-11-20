@@ -5,11 +5,11 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "Favorite_Book")
+@Table(name = "favorite_book")
 public class FavoriteBook {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "favoriteBook_ID")
+    @Column(name = "fb_id")
     private int idFavoriteBook; // mã sách yêu thích
 
     @ManyToOne(cascade = {
@@ -17,7 +17,7 @@ public class FavoriteBook {
             CascadeType.DETACH, CascadeType.REFRESH,
 
     })
-    @JoinColumn(name = "book_ID", nullable = false)
+    @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
     @ManyToOne(cascade = {
@@ -25,7 +25,7 @@ public class FavoriteBook {
             CascadeType.DETACH, CascadeType.REFRESH,
 
     })
-    @JoinColumn(name = "user_ID", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
 }
