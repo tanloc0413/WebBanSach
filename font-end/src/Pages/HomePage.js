@@ -5,7 +5,10 @@ import CarouselHome from '../Carousel/CarouselHome';
 function HomePage() {
   return (
     <div id='homePage'>
-      <CarouselHome/>
+      <div id='carouse-home'>
+        <CarouselHome/>
+      </div>
+      
     </div>
   )
 }
