@@ -19,7 +19,7 @@
 #new-book {
     width: 100%;
     height: auto;
-    padding: 1rem 10%;
+    padding: 1.8rem 10%;
     margin-top: 1.5rem;
     background-image: url("../imgs/flash_sale_background_image.jpg");
     /* background-size: cover; */
@@ -71,7 +71,10 @@
 
 #newBook_block {
     width: 100%;
-    background-color: #fff;
+    height: auto;
     margin-top: 1%;
     border-radius: 5px;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
 }
