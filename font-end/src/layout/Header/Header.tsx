@@ -9,8 +9,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 // files
-import '../css/header.css';
-import LogoIcon from '../imgs/logo-web.png';
+import '../../css/header.css';
+import LogoIcon from '../../imgs/logo-web.png';
 
 
 function Header() {
@@ -18,7 +18,7 @@ function Header() {
     <header id='header'>
       <div id='blk_header1'>
         <a id='blk_logo' href='/'>
-          <img id='logo-img' src={LogoIcon} alt='Logo'/>
+          <img id='header_logo-img' src={LogoIcon} alt='Logo'/>
         </a>
         <div id='blk_search'>
           <input type='search' placeholder='Tìm kiếm' id='input-search'/>
@@ -49,7 +49,7 @@ function Header() {
           <Navbar.Collapse>
             <Nav>
               <Nav.Link href="/">
-                <i class="fa-solid fa-house"></i>
+                <i className="fa-solid fa-house house-icon"></i>
               </Nav.Link>
               <Nav.Link href="#link">Link</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">

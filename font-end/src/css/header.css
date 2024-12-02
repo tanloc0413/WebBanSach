@@ -3,7 +3,7 @@
     height: auto;
     background-color: #fff;
     display: flex;
-    padding: 10px 0 0 0;
+    /* padding: 10px 0 0 0; */
     flex-direction: column;
 }
 
@@ -15,6 +15,7 @@
     justify-content: space-between;
     align-items: center;
     column-gap: 3%;
+    padding: 13px 10% 13px 10%;
 }
 
 #blk_logo, #blk_search, #blk_user, .blk_user-icon {
@@ -25,33 +26,33 @@
 /* Logo */
 #blk_logo {
     width: 10%;
-    height: auto;
-    justify-content: start;
+    height: 4rem;
+    justify-content: center;
 }
 
-#logo-img {
-    width: max-content;
-    height: 40px;
+#header_logo-img {
+    width: 80%;
+    height: auto;
 }
 
 /* Input Tìm Kiếm */
 #blk_search {
     width: 45%;
-    height: 35px;
+    height: 45px;
     justify-content: space-between;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 8px;
     border: 1.5px #515151 solid;
-    margin-left: 2rem;
+    margin-left: 5rem;
 }
 
 #input-search {
     width: 100%;
     height: 100%;
-    font-size: 15px;
+    font-size: 20px;
     outline: none;
     padding-left: 15px;
-    border-radius: 5px;
+    border-radius: 8px;
     border: none;
 }
 
@@ -60,27 +61,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 3px 2px 3px 0;
 }
 
 #search {
     width: 4rem;
-    height: 1.85rem;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #ff1111;
     border-radius: 5px;
-    margin-right: 2.5px;
+    /* margin-right: 2.5px; */
     border: none;
 }
 
 #search:active, #search:hover {
-    background-color: #ff4545;
+    background-color: #db1111;
 }
 
 .search-icon {
-    font-size: 25px;
-    color: #fff;    
+    font-size: 30px;
+    color: #fff; 
 }
 
 /* Tài Khoản */
@@ -103,15 +105,68 @@
 }
 
 .user-icon {
-    font-size: 1.4rem;
+    font-size: 1.7rem;
 }
 
 .title_text-icons {
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 #blk_header2 {
-    border-top: 1px solid #888888;
-    margin-top: 8px;
-    background-color: #f2f2f2;
+    width: 100%;
+    border-top: 1px solid #9e9e9e;
+    background-color: #318aff;
+    border-bottom: 1.5px solid #9e9e9e;
+}
+
+@media (min-width: 1200px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 950!important;
+    }
+}
+
+@media (min-width: 1300px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1150px!important;
+    }
+}
+
+@media (min-width: 1500px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1250px!important;
+    }
+}
+
+@media (min-width: 1600px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1350px!important;
+    }
+}
+
+@media (min-width: 1900px) {
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 1550px!important;
+    }
+}
+
+@media (min-width: 2000px) {
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 1650px!important;
+    }
+}
+
+@media (min-width: 2100px) {
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 1850px!important;
+    }
+}
+
+.navbar-nav {
+    column-gap: 1.2rem;
+}
+
+.nav-link {
+    font-size: 19px!important;
+    color: #fff!important;
 }

@@ -1,6 +1,10 @@
+
+
 #homePage {
     width: 100%;
     height: 100%;
+    background-color: #f0f0f0;
+    padding-bottom: 2.5%;
 }
 
 #carouse-home {
@@ -10,4 +14,64 @@
     display: flex;
     justify-content: center;
     align-items: start;
+}
+
+#new-book {
+    width: 100%;
+    height: auto;
+    padding: 1rem 10%;
+    margin-top: 1.5rem;
+    background-image: url("../imgs/flash_sale_background_image.jpg");
+    /* background-size: cover; */
+}
+
+/* Block sách mới nhất */
+#blk_newBook {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+#newBook_title {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 2% 12px 2.5%;
+}
+
+#newBook_title1-text {
+    font-size: 30px;
+    font-weight: 800;
+    /* color: #ff3900; */
+    color: #ff0000;
+    font-style: italic;
+    text-transform: uppercase;
+    text-shadow: 1.5px 1.5px 3px #ffcc00;
+}
+
+#newBook_title2-link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.title2_link-text {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.title2_link-icon {
+    font-size: 26px;
+    margin-top: 5px;
+}
+
+#newBook_block {
+    width: 100%;
+    background-color: #fff;
+    margin-top: 1%;
+    border-radius: 5px;
 }

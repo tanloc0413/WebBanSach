@@ -3,8 +3,8 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 
 // file
-import '../css/footer.css';
-import LogoIcon from '../imgs/logo-web.png';
+import '../../css/footer.css';
+import LogoIcon from '../../imgs/logo-web.png';
 
 function Footer() {
   const service = [
@@ -29,7 +29,7 @@ function Footer() {
           <a id='blk_logo' href='/'>
             <img id='logo-img' src={LogoIcon} alt='Logo'/>
           </a>
-          <div id='blk_text'>
+          <div id='blk_footer-text'>
             <p className='text-address text'>
               <b>Địa chỉ:</b> Số 90, Đường GS1, P.Đông Hòa, Dĩ An, Bình Dương
             </p>
@@ -41,7 +41,7 @@ function Footer() {
               KHÔNG hỗ trợ đặt mua và nhận hàng trực tiếp tại văn phòng cũng như tất cả Hệ Thống Book Store trên toàn quốc.
             </p>
           </div>
-          <div id='blk_img'>
+          <div id='blk_img-MIT'>
             <Image src="http://online.gov.vn/Content/EndUser/LogoCCDVSaleNoti/logoSaleNoti.png" className='img-MIT' />
           </div>
         </div>
@@ -72,16 +72,16 @@ function Footer() {
             <p className='text-title text-contact'>Liên hệ</p>
             <div id='blk_contact'>
               <div className='contact-address contact'>
-                <i class="fa-solid fa-location-dot"></i>
+                <i className="fa-solid fa-location-dot"></i>
                 <p className='text_small-contact'>122, P.Tân Đông Hiệp, Dĩ An, Bình Dương</p>
               </div>
               <div className='contact-email contact'>
                 {/* <i class="fa-solid fa-envelope"></i> */}
-                <i class="fa-regular fa-envelope"></i>
+                <i className="fa-regular fa-envelope mail-icon"></i>
                 <p className='text_small-contact'>tranloc9888@gmail.com</p>
               </div>
               <div className='contact-phone contact'>
-              <i class="fa-solid fa-phone"></i>
+                <i className="fa-solid fa-phone"></i>
                 <p className='text_small-contact'>0379383465</p>
               </div>
             </div>
