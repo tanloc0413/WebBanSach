@@ -10,7 +10,7 @@ public class Evaluate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "evaluate_id")
-    private long idEvaluate;
+    private long evaluateId;
 
     @Column(name = "rating_points")
     private float ratingPoints; // điểm xếp hạng

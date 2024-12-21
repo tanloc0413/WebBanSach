@@ -12,10 +12,10 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="book_id")
-    private int idBook; // mã sách
+    private int bookId; // mã sách
 
     @Column(name = "book_name")
-    private String nameBook; // tên sách
+    private String bookName; // tên sách
 
     @Column(name = "descripstion", columnDefinition = "text")
     private String description; // mô tả
@@ -30,7 +30,7 @@ public class Book {
     private int quantity; // số lượng
 
     @Column(name = "average_rating")
-    private Double averageRating; // đánh giá
+    private Double evaluate; // điểm đánh giá
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST, CascadeType.MERGE,
@@ -74,6 +74,7 @@ public class Book {
 //            CascadeType.DETACH, CascadeType.REFRESH,
 //    })
 //    List<CartDetail> listCartDetail; // danh sách chi tiết giỏ hàng
+
     @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     List<FavoriteBook> listFavoriteBook; // danh sách yêu thích
 }

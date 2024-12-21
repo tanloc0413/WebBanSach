@@ -11,10 +11,10 @@ public class DeliveryMethod {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "dm_id")
-    private int idDeliveryMethod; // mã phương thức giao hàng
+    private int deliveryMethodId; // mã phương thức giao hàng
 
     @Column(name = "dm_name")
-    private String nameDeliveryMethod; // tên phương thức giao hàng
+    private String deliveryMethodName; // tên phương thức giao hàng
 
     @Column(name = "description")
     private String description;

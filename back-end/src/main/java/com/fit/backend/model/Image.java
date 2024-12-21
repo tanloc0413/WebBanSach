@@ -10,10 +10,10 @@ public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "img_id")
-    private int idImage;
+    private int imageId;
 
     @Column(name = "img_name")
-    private String nameImage;
+    private String imageName;
 
     @Column(name = "check_icon")
     private boolean checkIcon; // kiểm tra có phải là icon
@@ -21,8 +21,8 @@ public class Image {
     @Column(name = "img_path")
     private String pathImage; // đường dẫn
 
-    @Column(name = "img_data")
     @Lob
+    @Column(name = "img_data", columnDefinition = "LONGTEXT")
     private String dataImage; // dữ liệu hình ảnh
 
     @ManyToOne(cascade = {

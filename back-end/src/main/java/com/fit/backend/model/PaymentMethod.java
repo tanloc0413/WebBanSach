@@ -11,10 +11,10 @@ public class PaymentMethod {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pm_id")
-    private int idPaymentMethod; // mã phương thức thanh toán
+    private int paymentMethodId; // mã phương thức thanh toán
 
     @Column(name = "pm_name")
-    private String namePaymentMethod; // tên phương thức thanh toán
+    private String paymentMethodName; // tên phương thức thanh toán
 
     @Column(name = "description")
     private String description;

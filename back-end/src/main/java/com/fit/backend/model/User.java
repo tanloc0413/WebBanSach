@@ -11,10 +11,10 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private int idUser; // mã người dùng
+    private int userId; // mã người dùng
 
     @Column(name = "username")
-    private String username;
+    private String userName;
 
     @Column(name = "password")
     private String password;

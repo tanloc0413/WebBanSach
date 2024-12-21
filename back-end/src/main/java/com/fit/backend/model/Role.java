@@ -12,10 +12,10 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
-    private int idRole; // mã quyền
+    private int roleId; // mã quyền
 
     @Column(name = "role_name")
-    private String nameRole; // tên quyền
+    private String roleName; // tên quyền
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST, CascadeType.MERGE,

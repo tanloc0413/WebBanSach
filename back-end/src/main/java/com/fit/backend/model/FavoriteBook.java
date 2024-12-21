@@ -10,7 +10,7 @@ public class FavoriteBook {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "fb_id")
-    private int idFavoriteBook; // mã sách yêu thích
+    private int favoriteBookId; // mã sách yêu thích
 
     @ManyToOne(cascade = {
             CascadeType.PERSIST, CascadeType.MERGE,

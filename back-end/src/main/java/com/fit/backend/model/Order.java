@@ -12,7 +12,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
-    private int idOrder; // mã đơn hàng
+    private int orderId; // mã đơn hàng
 
     @Column(name = "date_created")
     private Date dateCreated; // ngày tạo giỏ hàng

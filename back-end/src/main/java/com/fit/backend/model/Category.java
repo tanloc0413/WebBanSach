@@ -14,10 +14,10 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
-    private int idCategory;
+    private int categoryId;
 
     @Column(name = "category_name", length = 150)
-    private String nameCategory;
+    private String categoryName;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST, CascadeType.MERGE,

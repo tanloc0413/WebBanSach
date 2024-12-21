@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 @Configuration
 public class MethodRestConfig implements RepositoryRestConfigurer {
-    private String url = "http://localhost:8080/";
+    private String url = "http://localhost:3000";
 
     @Autowired
     private EntityManager entityManager;
@@ -30,6 +30,11 @@ public class MethodRestConfig implements RepositoryRestConfigurer {
         // cho phép ids trong khi tra ve json
         config.exposeIdsFor(entityManager.getMetamodel().getEntities().stream().map(Type::getJavaType).toArray(Class[]::new));
         // config.exposeIdsFor(Category.class);
+
+        // cor configuration
+        cors.addMapping("/**")
+                .allowedOrigins(url)
+                .allowedMethods("GET", "POST", "PUT", "DELETE");
 
         disableHttpMethods(User.class, config, blockMethods );
     }
