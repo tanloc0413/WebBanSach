@@ -1,12 +1,13 @@
 interface Book {
-    id: number;
-    title: String;
-    authorName: String;
-    description: String;
+    bookId: number;
+    bookName: string;
+    nameAuthor: string;
+    description: string;
     price: number;
     listPrice: number;
-    imageUrl: String;
-
+    evaluate: number;
+    quantity: number;
+    imgUrl: string;
 }
 
 export default Book;

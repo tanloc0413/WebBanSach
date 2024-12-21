@@ -1,35 +1,8 @@
-import React from 'react';
-// import { IoCartOutline } from "react-icons/io5";
-// import { MdFavoriteBorder } from "react-icons/md";
+import { formatCurrency, formatNumberCurrency } from '../../models/FormatMoney';
 
 import '../../css/cardNewBook.css';
 
-// Định dạng tiền tệ
-function formatCurrency(amount: number): JSX.Element {
-  const formattedAmount = new Intl.NumberFormat('vi-VN', {
-    style: 'currency',
-    currency: 'VND',
-  })
-  .format(amount)
-  .replace('₫', '');
-
-  return (
-    <span>
-      {formattedAmount}
-      <span className="currency-symbol">đ</span>
-    </span>
-  );
-}
-
-function formatNumberCurrency(amount: number): string {
-  return new Intl.NumberFormat('vi-VN', {
-    style: 'currency',
-    currency: 'VND',
-  })
-  .format(amount)
-  .replace(/\s?₫/g, '');
-}
-
+// {index, title, imageUrl,}
 export default function CardNewBook() {
   const price = 50000;
   const listPrice = 45000;
@@ -66,10 +39,7 @@ export default function CardNewBook() {
             </div>
             <p id='blk2_bookshelf-listPrice'>{formatNumberCurrency(listPrice)}</p>
           </div>
-          {/* <div id='blk2_shop'>
-            <MdFavoriteBorder id='blk2_shop-icon1'/>
-            <IoCartOutline id='blk2_shop-icon2'/>
-          </div> */}
+          
         </div>
       </div>
     </div>

@@ -30,6 +30,20 @@ function CarouselHome() {
               <p>Some representative placeholder content for the first slide.</p>
             </CCarouselCaption> */}
           </CCarouselItem>
+          <CCarouselItem>
+            <CImage className="d-block w-100" src={IMG} alt="slide 4" />
+            {/* <CCarouselCaption className="d-none d-md-block">
+              <h5>Third slide label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+            </CCarouselCaption> */}
+          </CCarouselItem>
+          <CCarouselItem>
+            <CImage className="d-block w-100" src={IMG} alt="slide 5" />
+            {/* <CCarouselCaption className="d-none d-md-block">
+              <h5>Third slide label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+            </CCarouselCaption> */}
+          </CCarouselItem>
         </CCarousel>
       
       </div>

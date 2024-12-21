@@ -1,0 +1,456 @@
+// các folder api, layout, models đều cùng cấp
+
+/----- Đây là file HomePage.tsx trong folder HomePage và folder này ở layout -----/
+
+import React from 'react';
+
+import '../../css/homePage.css';
+import CarouselHome from '../Carousel/CarouselHome';
+import CardNewBook from '../Cards/CardNewBook';
+import ListBookHome from './ListBookHome';
+import listBookJson from '../../json/listBook.json';
+// import ListBook from './Products/ListBook';
+
+function HomePage() {
+  // const cardList[] ;
+  
+  return (
+    <div id='homePage'>
+      <div id='carouse-home'>
+        <CarouselHome/>
+      </div>
+      <div id='new-book'>
+        {/* <ListBook/> */}
+        {/* <Test/> */}
+        <div id='blk_newBook'>
+          <div id='newBook_title'>
+            <div id='newBook_title1'>
+              <p id='newBook_title1-text'>
+                Sách Mới Nhất
+              </p>
+            </div>
+            <div id='newBook_title2'>
+              <a href='#' id='newBook_title2-link'>
+                <p className='title2_link-text'>Xem tất cả</p>
+                <i className="fa-solid fa-angle-right title2_link-icon"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div id='newBook_block'>
+          {/* <CardNewBook/> */}
+          {listBookJson.slice(0, 6).map((_, index) => (
+            <CardNewBook key={index} />
+          ))}
+        </div>
+      </div>
+      <div id='list-books'>
+        <ListBookHome/>
+      </div>
+    </div>
+  )
+}
+
+export default HomePage;
+
+/----- Đây là file ListBookHome.tsx trong folder HomePage và folder này ở layout -----/
+
+import React, { useEffect, useState } from 'react';
+
+import BookModel from '../../models/BookModel';
+import CardBookHome from '../Cards/CardBookHome';
+import { getAllTheBooks } from '../../api/BookAPI';
+import '../../css/listBookHome.css';
+// import BookProperties from './BookProperties';
+// import CardBookHome from '../Cards/CardBookHome';
+
+const ListBookHome: React.FC = () => {
+    const[listBook, setListBook] = useState<BookModel[]>([]);
+    const[loadingData, setLoadingData] = useState(true);
+    const[error, setError] = useState(null);
+
+    useEffect(() => {
+        getAllTheBooks()
+        .then(bookData => {
+            setListBook(bookData);
+            setLoadingData(false);
+        })
+        .catch(error => {
+            setError(error.message);
+        })
+    }, [])
+
+    if(loadingData) {
+        return (
+            <div id='loadingData'>
+                <p id='loadingData-text'>
+                    Đang tải dữ liệu của sách!
+                </p>
+            </div>
+        )
+    }
+
+    if(error) {
+        <div id='error'>
+            <p id='error-text'>
+                Gặp lỗi: <b>{error}</b>
+            </p>
+        </div>
+    }
+
+    return (
+        <div id='blk_listBook'>
+            <div id='blk_listBook-title'>
+                <p id='text_listBook-title'>
+                    Sách
+                </p>
+            </div>
+            <div id='blk_listBook-card'>
+                {
+                    listBook.slice(0, 18).map((books) => (
+                        <CardBookHome
+                            key={books.bookId}
+                            books={books}
+                        />
+                    )) 
+                }
+            </div>
+            <div id='blk_listBook-seeMore'>
+                <a href='/sach' id='btn_listBook-seeMore'>
+                    Xem thêm
+                </a>
+            </div>
+        </div>
+    );
+}
+
+export default ListBookHome;
+
+/----- Đây là file CardBookHome.tsx trong folder Cards và folder này ở layout -----/
+
+import React, { useEffect, useState } from "react";
+import { formatCurrency, formatNumberCurrency } from '../../models/FormatMoney';
+import { IoCartOutline } from "react-icons/io5";
+import { MdFavoriteBorder } from "react-icons/md";
+import { IoHeartDislikeOutline } from "react-icons/io5";
+import { BsCartPlus } from "react-icons/bs";
+
+import '../../css/cardBookHome.css';
+import BookModel from "../../models/BookModel";
+import BookImageModel from "../../models/BookImageModel";
+import { getAllImageOfTheBooks } from "../../api/ImageAPI";
+
+
+interface CardBookHomeProps {
+  books: BookModel;
+}
+
+// export default function CardBookHome({ imgUrl, episode, titles, price, listPrice }: CardBookHomeProps) {
+const CardBookHome: React.FC<CardBookHomeProps> = (props) => {
+  const [isFollowed, setIsFollowed] = useState(false);
+
+  const bookId:number = props.books.bookId;
+  const[listImgBook, setListImgBook] = useState<BookImageModel[]>([]);
+  const[loadingData, setLoadingData] = useState(true);
+  const[error, setError] = useState(null);
+
+  // Format tiền
+  const handleFollowBook = () => {
+    setIsFollowed((prevFollowed) => {
+      const newState = !prevFollowed;
+      // Lưu trạng thái theo dõi vào localStorage (chuyển thành chuỗi)
+      localStorage.setItem(`followed-${props.books.bookTitle}`, JSON.stringify(newState));
+      return newState;
+    });
+  };
+  
+  // Lấy danh sách ảnh
+  useEffect(() => {
+    getAllImageOfTheBooks(bookId)
+    .then(imageData => {
+      console.log("Ảnh đã tải lên:", imageData);
+      setListImgBook(imageData);
+      setLoadingData(false);
+    })
+    .catch(error => {
+      console.error("Lỗi khi lấy ảnh:", error);
+      setLoadingData(false);
+      setError(error.message);
+    })
+  }, [])
+
+  if(loadingData) {
+    return (
+      <div id='loadingData'>
+        <p id='loadingData-text'>
+          Đang tải dữ liệu ảnh!
+        </p>
+      </div>
+    )
+  }
+
+  if(error) {
+    <div id='error'>
+      <p id='error-text'>
+        Gặp lỗi: <b>{error}</b>
+      </p>
+    </div>
+  }
+  
+
+  // lấy ảnh đại diện
+  let dataImage:string = "";
+
+  if(listImgBook[0] && listImgBook[0].dataImage) {
+    dataImage = listImgBook[0].dataImage;
+  }
+  
+  return (
+    <div id="cardHome">
+      <div id="cardHome_blk1">
+        <a href="#" id="cardHome_blk1-link">
+          <div className="cardHome_blk1-imgs">
+            {/* {listImgBook[0].dataImage && */}
+            {/* {dataImage && */}
+              <img
+                // src={`${listImgBook[0].dataImage}`}
+                src={dataImage}
+                alt="Ảnh sách"
+                className="cardHome_blk1-image"
+              />
+            {/* } */}
+            {/* {episode && (
+              <div id="numberEp">
+                <p>{episode}</p>
+              </div>
+            )} */}
+          </div>
+        </a>
+      </div>
+      <div id="cardHome_blk2">
+        <a href="#" id="cardHome_blk2-link">
+          <p className="cardHome_blk2-title">
+            {props.books.bookTitle}
+          </p>
+        </a>
+        <div id="cardHome_blk2-bookshelf">
+          <div id="block2_bookshelf">
+            <p id="block2_bookshelf-price">{formatCurrency(props.books.price ?? 0)}</p>
+            <p id="block2_bookshelf-listPrice">{formatNumberCurrency(props.books.listPrice ?? 0)}đ</p>
+          </div>
+          <div id="cardHome_blk2-shop">
+            <button
+              id="blk2_shop-icon1"
+              className={`${isFollowed ? 'shop-active' : ''}`}
+              onClick={handleFollowBook}
+            >
+              {isFollowed ? (
+                <IoHeartDislikeOutline />
+              ) : (
+                <MdFavoriteBorder />
+              )}
+            </button>
+            <button id="blk2_shop-icon2">
+              {/* <IoCartOutline /> */}
+              <BsCartPlus className="btn_cart-home"/>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default CardBookHome;
+
+/----- Đây là file Book.ts trong folder models -----/
+
+interface Book {
+    id: number;
+    title: string;
+    authorName: string;
+    description: string;
+    price: number;
+    listPrice: number;
+    imageUrl: string;
+}
+
+export default Book;
+
+/----- Đây là file BookModel.ts trong folder models -----/
+
+class BookModel {
+    bookId: number;
+    // "?" là để trường hợp có thể NULL
+    bookTitle?: string;
+    nameAuthor?: string;
+    description?: string;
+    evaluate?: number;
+    listPrice?: number;
+    price?: number;
+    quantity?: number;
+
+    constructor (
+        bookId: number,
+        bookTitle?: string,
+        nameAuthor?: string,
+        description?: string,
+        evaluate?: number,
+        listPrice?: number,
+        price?: number,
+        quantity?: number
+    ) {
+        this.bookId = bookId;
+        this.bookTitle = bookTitle;
+        this.nameAuthor = nameAuthor;
+        this.description = description;
+        this.evaluate = evaluate;
+        this.listPrice = listPrice;
+        this.price = price;
+        this.quantity = quantity;
+    }
+    
+}
+
+export default BookModel;
+
+/----- Đây là file BookImageModel.ts trong folder models -----/
+
+class BookImageModel {
+    imageId: number;
+    // "?" là để trường hợp có thể NULL
+    nameImg?: string;
+    checkIcon?: boolean;
+    pathImage?: string;
+    dataImage?: string;
+
+    constructor (
+        imageId: number,
+        nameImg?: string,
+        checkIcon?: boolean,
+        pathImage?: string,
+        dataImage?: string
+    ) {
+        this.imageId = imageId;
+        this.nameImg = nameImg;
+        this.checkIcon = checkIcon;
+        this.pathImage = pathImage;
+        this.dataImage = dataImage;
+    }
+    
+}
+
+export default BookImageModel;
+
+/----- Đây là file FormatMoney.tsx trong folder models -----/
+
+export function formatCurrency(amount: number): JSX.Element {
+    const formattedAmount = new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND',
+    })
+    .format(amount)
+    .replace('₫', '');
+  
+    return (
+        <span>
+          {formattedAmount}
+          <span className="currency-symbol">đ</span>
+        </span>
+    );
+}
+
+export function formatNumberCurrency(amount: number): string {
+    return new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND',
+    })
+    .format(amount)
+    .replace(/\s?₫/g, '');
+}
+
+/----- Đây là file BookAPI.ts trong folder api -----/
+
+import React from 'react';
+import BookModel from '../models/BookModel';
+import { myRequest } from './Request';
+
+export async function getAllTheBooks():Promise<BookModel[]> {
+    const result:BookModel[] = [];
+
+    // Xác định endpoint
+    const path:string = 'http://localhost:8080/sach';
+
+    // Gọi phương thức request
+    const response = await myRequest(path);
+
+    // Lấy ra json sách
+    const responseData = response._embedded.books;
+    console.log(responseData);
+
+    for(const key in responseData) {
+        result.push ({
+            bookId: responseData[key].bookId,
+            bookTitle: responseData[key].bookTitle,
+            nameAuthor: responseData[key].nameAuthor,
+            description: responseData[key].description,
+            evaluate: responseData[key].evaluate,
+            listPrice: responseData[key].listPrice,
+            price: responseData[key].price,
+            quantity: responseData[key].quantity
+        });
+    }
+
+    // console.log(response);
+
+    return result;
+}
+
+/----- Đây là file ImageAPI.ts trong folder api -----/
+
+import BookImageModel from '../models/BookImageModel';
+import { myRequest } from './Request';
+
+export async function getAllImageOfTheBooks(bookId: number):Promise<BookImageModel[]> {
+    const result:BookImageModel[] = [];
+
+    // Xác định endpoint
+    console.log("bookId:", bookId);
+    const path:string = `http://localhost:8080/sach/${bookId}/listImage`;
+
+    // Gọi phương thức request
+    const response = await myRequest(path);
+
+    // Lấy ra json sách
+    const responseData = response._embedded.images;
+    console.log(responseData);
+
+    for(const key in responseData) {
+        result.push ({
+            imageId: responseData[key].imageId,
+            nameImg: responseData[key].nameImg,
+            checkIcon: responseData[key].checkIcon,
+            pathImage: responseData[key].pathImage,
+            dataImage: responseData[key].dataImage
+        });
+    }
+
+    // console.log(response);
+
+    return result;   
+}
+
+/----- Đây là file Request.ts trong folder api -----/
+
+export async function myRequest(path:string) {
+    // Truy cấn đến đường dẫn
+    const response = await fetch(path);
+
+    // Nếu bị trả về lỗi
+    if(!response.ok) {
+        throw new Error(`Không thể truy cập ${path}`);
+    }
+
+    // Nếu trả về OK
+    return response.json();
+}

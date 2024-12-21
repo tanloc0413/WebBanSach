@@ -1,5 +1,3 @@
-
-
 #homePage {
     width: 100%;
     height: 100%;
@@ -42,17 +40,31 @@
     padding: 12px 2% 12px 2.5%;
 }
 
+#newBook_title1 {
+    height: 100%;
+}
+
+#newBook_title2 {
+    padding-top: 5px;
+}
+
 #newBook_title1-text {
-    font-size: 30px;
-    font-weight: 800;
+    font-size: 36px;
+    font-weight: 900;
     /* color: #ff3900; */
     color: #ff0000;
     font-style: italic;
     text-transform: uppercase;
     text-shadow: 1.5px 1.5px 3px #ffcc00;
+    font-family: "Roboto", serif;
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;
+    padding-top: 7px;
 }
 
 #newBook_title2-link {
+    color: #1060ff!important;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -65,8 +77,7 @@
 }
 
 .title2_link-icon {
-    font-size: 26px;
-    margin-top: 5px;
+    font-size: 30px;
 }
 
 #newBook_block {
@@ -74,7 +85,21 @@
     height: auto;
     margin-top: 1%;
     border-radius: 5px;
+    /* display: grid; */
+    /* grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); */
+    /* grid-template-columns: 1fr; */
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
+}
+
+/*-------------------------- Danh sách các quyển sách --------------------------*/
+
+#list-books {
+    width: 100%;
+    height: auto;
+    padding: 0 8%;
+    /* background-color: #fff; */
+    margin-top: 2rem;
+    box-sizing: border-box;
 }

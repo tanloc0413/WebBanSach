@@ -14,7 +14,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    column-gap: 3%;
+    column-gap: 2%;
     padding: 13px 10% 13px 10%;
 }
 
@@ -31,7 +31,7 @@
 }
 
 #header_logo-img {
-    width: 80%;
+    width: 70%;
     height: auto;
 }
 
@@ -40,6 +40,7 @@
     width: 45%;
     height: 45px;
     justify-content: space-between;
+    align-items: center;
     background-color: #fff;
     border-radius: 8px;
     border: 1.5px #515151 solid;
@@ -52,8 +53,10 @@
     font-size: 20px;
     outline: none;
     padding-left: 15px;
+    padding-bottom: 2px;
     border-radius: 8px;
     border: none;
+    text-align: start;
 }
 
 #blk_search-icon {
@@ -91,6 +94,7 @@
     justify-content: end;
     flex-direction: row;
     column-gap: 2rem;
+    margin-top: 5px;
 }
 
 .blk_user-icon {

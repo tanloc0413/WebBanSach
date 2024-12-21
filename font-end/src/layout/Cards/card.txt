@@ -1,0 +1,94 @@
+import React, { useState, useEffect } from "react";
+import { formatCurrency, formatNumberCurrency } from '../../models/FormatMoney';
+import { IoCartOutline } from "react-icons/io5";
+import { MdFavoriteBorder } from "react-icons/md";
+import { IoHeartDislikeOutline } from "react-icons/io5";
+
+import '../../css/cardBookHome.css';
+
+export default function CardBookHome({ imgUrl, episode, titles, price, listPrice }) {
+  const [isFollowed, setIsFollowed] = useState(false);
+
+  // Lưu trạng thái "theo dõi" vào localStorage
+  useEffect(() => {
+    const savedFollowState = localStorage.getItem(`followed-${titles}`);
+    if (savedFollowState === 'true') {
+      setIsFollowed(true);
+    }
+  }, [titles]);
+
+  const handleFollowBook = () => {
+    setIsFollowed((prevFollowed) => {
+      const newState = !prevFollowed;
+      localStorage.setItem(`followed-${titles}`, newState);
+      return newState;
+    });
+  };
+
+  // Tính toán phần trăm giảm giá (nếu có)
+  const discountPercentage = listPrice > price 
+    ? Math.round(((listPrice - price) / listPrice) * 100)
+    : 0;
+
+  return (
+    <div className="cardHome">
+      {/* Phần hình ảnh */}
+      <div className="cardHome_blk1">
+        <a href="#" className="cardHome_blk1-link">
+          <div className="cardHome_blk1-imgs">
+            <img
+              src={imgUrl}
+              alt="Ảnh sách"
+              className="cardHome_blk1-image"
+            />
+            {episode && (
+              <div className="numberEp">
+                <p>Tập {episode}</p>
+              </div>
+            )}
+          </div>
+        </a>
+      </div>
+
+      {/* Phần thông tin sách */}
+      <div className="cardHome_blk2">
+        <a href="#" className="cardHome_blk2-link">
+          <p className="cardHome_blk2-title">
+            {titles}
+          </p>
+        </a>
+        <div className="cardHome_blk2-bookshelf">
+          <div className="block2_bookshelf">
+            <p className="block2_bookshelf-price">{formatCurrency(price)}</p>
+            {discountPercentage > 0 && (
+              <p className="block2_bookshelf-discount">
+                -{discountPercentage}%
+              </p>
+            )}
+            <p className="block2_bookshelf-listPrice">
+              {listPrice > price && `${formatNumberCurrency(listPrice)}đ`}
+            </p>
+          </div>
+
+          {/* Phần nút theo dõi và thêm vào giỏ hàng */}
+          <div className="cardHome_blk2-shop">
+            <button
+              id="blk2_shop-icon1"
+              className={isFollowed ? "shop-active" : ""}
+              onClick={handleFollowBook}
+            >
+              {isFollowed ? (
+                <IoHeartDislikeOutline />
+              ) : (
+                <MdFavoriteBorder />
+              )}
+            </button>
+            <a id="blk2_shop-icon2" href="/gio-hang">
+              <IoCartOutline />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

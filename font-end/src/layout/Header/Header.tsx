@@ -33,14 +33,14 @@ function Header() {
             <AiOutlineBell className='notification-icon user-icon'/>
             <p className='notification-text title_text-icons'>Thông Báo</p>
           </div>
-          <div className='cart blk_user-icon'>
+          <a className='cart blk_user-icon' href='/gio-hang'>
             <IoCartOutline className='cart-icon user-icon'/>
             <p className='cart-text title_text-icons'>Giỏ Hàng</p>
-          </div>
-          <div className='account blk_user-icon'>
+          </a>
+          <a className='account blk_user-icon' href='tai-khoan'>
             <FaRegUser className='account-icon user-icon'/>
             <p className='account-text title_text-icons'>Tài Khoản</p>
-          </div>
+          </a>
 
         </div>
       </div>
