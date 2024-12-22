@@ -32,7 +32,7 @@
     grid-template-rows: repeat(3, auto);
     justify-items: center;
     justify-content: space-between;
-    overflow-y: hidden;
+    overflow: hidden;
     /* justify-content: flex-start; */
     /* row-gap: 1.5rem; */
     /* row-gap: 1.5rem;
@@ -48,7 +48,7 @@
 #blk_listBook-seeMore {
     width: 100%;
     height: 100%;
-    margin-top: 1.8%;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
 }
@@ -68,5 +68,29 @@
     background-color: #ff0e0e;
 }
 
-/* #btn_listBook-seeMore:hover {} */
+#blk_loadingData, #blk_error, #blk_noBookYet {
+    width: 100%;
+    height: 100%;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loadingData, #error {
+    width: max-content;
+    height: auto;
+    padding: 1.5rem 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    /* border: 2px solid #ff0e0e; */
+    color: #000;
+}
+
+#loadingData-text, #error-text, #noBookYet-text {
+    font-size: 24px;
+}
 

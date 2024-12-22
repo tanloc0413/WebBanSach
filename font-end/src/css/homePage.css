@@ -85,12 +85,9 @@
     height: auto;
     margin-top: 1%;
     border-radius: 5px;
-    /* display: grid; */
-    /* grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); */
-    /* grid-template-columns: 1fr; */
     display: inline-flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
 }
 
 /*-------------------------- Danh sách các quyển sách --------------------------*/
@@ -98,7 +95,7 @@
 #list-books {
     width: 100%;
     height: auto;
-    padding: 0 8%;
+    padding: 0 5%;
     /* background-color: #fff; */
     margin-top: 2rem;
     box-sizing: border-box;

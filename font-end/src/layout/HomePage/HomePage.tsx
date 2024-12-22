@@ -2,9 +2,10 @@ import React from 'react';
 
 import '../../css/homePage.css';
 import CarouselHome from '../Carousel/CarouselHome';
-import CardNewBook from '../Cards/CardNewBook';
+// import CardNewBook from '../Cards/CardNewBook';
 import ListBookHome from './ListBookHome';
-import listBookJson from '../../json/listBook.json';
+import ListNewBookHome from './ListNewBookHome';
+// import listBookJson from '../../json/listBook.json';
 
 function HomePage() {
   
@@ -32,10 +33,10 @@ function HomePage() {
           </div>
         </div>
         <div id='newBook_block'>
-          {/* <CardNewBook/> */}
-          {listBookJson.slice(0, 6).map((_, index) => (
+          {/* {listBookJson.slice(0, 7).map((_, index) => (
             <CardNewBook key={index} />
-          ))}
+          ))} */}
+          <ListNewBookHome/>
         </div>
       </div>
       <div id='list-books'>

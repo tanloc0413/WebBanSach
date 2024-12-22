@@ -3,10 +3,9 @@
     height: auto;
     background-color: #fff;
     display: flex;
-    padding: 2% 0;
+    padding: 2% 0 1% 0;
     flex-direction: row;
     border-top: 2px solid #949494;
-    /* margin-top: 2.5rem; */
 }
 
 #blk_footer {

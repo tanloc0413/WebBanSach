@@ -51,7 +51,7 @@ function Header() {
               <Nav.Link href="/">
                 <i className="fa-solid fa-house house-icon"></i>
               </Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
+              <Nav.Link href="/sach" className='nav_link-text'>Tất cả sách</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">

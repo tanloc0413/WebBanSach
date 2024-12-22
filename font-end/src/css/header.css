@@ -174,3 +174,13 @@
     font-size: 19px!important;
     color: #fff!important;
 }
+
+.nav_link-text {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    margin-top: 1.5px;
+    text-transform: capitalize;
+    font-size: 18px;
+}

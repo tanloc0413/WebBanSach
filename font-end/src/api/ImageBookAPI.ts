@@ -1,12 +1,8 @@
 import BookImageModel from '../models/BookImageModel';
 import { myRequest } from './Request';
 
-
-export async function getAllImageOfTheBooks(bookId: number):Promise<BookImageModel[]> {
+async function getImgBook(path:string):Promise<BookImageModel[]> {
     const result:BookImageModel[] = [];
-
-    // Xác định endpoint
-    const path:string = `http://localhost:8080/sach/${bookId}/listImage`;
 
     // Gọi phương thức request
     const response = await myRequest(path);
@@ -27,3 +23,18 @@ export async function getAllImageOfTheBooks(bookId: number):Promise<BookImageMod
     return result;
 }
 
+// Lấy tất cả ảnh của sách
+export async function getAllImageOfTheBooks(bookId: number):Promise<BookImageModel[]> {
+    // Xác định endpoint
+    const path:string = `http://localhost:8080/sach/${bookId}/listImage`;
+
+    return getImgBook(path);
+}
+
+// Lấy ảnh đại diện của sách
+export async function getFirstImgBook(bookId: number):Promise<BookImageModel[]> {
+    // Xác định endpoint
+    const path:string = `http://localhost:8080/sach/${bookId}/listImage?sort=imageId,asc&page=0&size=1`;
+
+    return getImgBook(path);
+}

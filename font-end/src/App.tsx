@@ -12,7 +12,9 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      <RoutePage/>
+      <div id='app-container'>
+        <RoutePage/>
+      </div>
       <Footer/>
     </div>
   );

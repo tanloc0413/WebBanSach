@@ -2,11 +2,9 @@ import BookModel from '../models/BookModel';
 import { myRequest } from './Request';
 
 
-export async function getAllTheBooks():Promise<BookModel[]> {
+async function getBooks(path:string):Promise<BookModel[]> {
     const result:BookModel[] = [];
 
-    // Xác định endpoint
-    const path:string = 'http://localhost:8080/sach';
 
     // Gọi phương thức request
     const response = await myRequest(path);
@@ -31,4 +29,18 @@ export async function getAllTheBooks():Promise<BookModel[]> {
     }
 
     return result;
+}
+
+export async function getAllTheBooks():Promise<BookModel[]> {
+    // Xác định endpoint
+    const path:string = 'http://localhost:8080/sach';
+    
+    return getBooks(path);
+}
+
+export async function getTheLastestBook():Promise<BookModel[]> {
+    // Xác định endpoint
+    const path:string = 'http://localhost:8080/sach?sort=bookId,desc';
+
+    return getBooks(path);
 }

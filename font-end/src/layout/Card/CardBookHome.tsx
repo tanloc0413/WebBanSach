@@ -1,16 +1,16 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { formatCurrency, formatNumberCurrency } from '../../models/FormatMoney';
-import { MdFavoriteBorder } from "react-icons/md";
-import { IoHeartDislikeOutline } from "react-icons/io5";
-import { BsCartPlus } from "react-icons/bs";
-import { IoCartOutline } from "react-icons/io5";
+import { MdFavoriteBorder } from 'react-icons/md';
+import { IoHeartDislikeOutline } from 'react-icons/io5';
+import { BsCartPlus } from 'react-icons/bs';
+import { IoCartOutline } from 'react-icons/io5';
 
 import '../../css/cardBookHome.css';
-import BookModel from "../../models/BookModel";
-import BookImageModel from "../../models/BookImageModel";
-import { getAllImageOfTheBooks } from "../../api/ImageBookAPI";
-
+import BookModel from '../../models/BookModel';
+import BookImageModel from '../../models/BookImageModel';
+import { getAllImageOfTheBooks, getFirstImgBook } from '../../api/ImageBookAPI';
+import AvtImage from '../../imgs/avatar books.jpg';
 
 interface BookProps {
   books: BookModel;
@@ -21,58 +21,63 @@ const CardBookHome: React.FC<BookProps> = (props) => {
 
   const bookId:number = props.books.bookId;
   const[listImgBook, setListImgBook] = useState<BookImageModel[]>([]);
-  const[loadingData, setLoadingData] = useState(true);
-  const[error, setError] = useState(null);
+  const[loadingDataImg, setLoadingDataImg] = useState(true);
+  const[errorImg, setErrorImg] = useState(null);
 
   // Format tiền
   const handleFollowBook = () => {
     setIsFollowed((prevFollowed) => {
       const newState = !prevFollowed;
       // Lưu trạng thái theo dõi vào localStorage (chuyển thành chuỗi)
-      localStorage.setItem(`followed-${props.books.bookName}`, JSON.stringify(newState));
+      localStorage.setItem(`followed-${props.books.bookId}`, JSON.stringify(newState));
       return newState;
     });
   };
 
   // Lấy danh sách ảnh
   useEffect(() => {
-    getAllImageOfTheBooks(bookId)
+    // getAllImageOfTheBooks(bookId)
+    getFirstImgBook(bookId)
     .then(imageData => {
-      console.log("Ảnh đã tải lên:", imageData);
+      // console.log("Ảnh đã tải lên:", imageData);
       setListImgBook(imageData);
-      setLoadingData(false);
-      
+      setLoadingDataImg(false);
     })
-    .catch(error => {
-      console.error("Lỗi khi lấy ảnh:", error);
-      setLoadingData(false);
-      setError(error.message);
+    .catch(errorImg => {
+      // console.error("Lỗi khi lấy ảnh:", errorImg);
+      setLoadingDataImg(false);
+      setErrorImg(errorImg.message);
     })
   }, [])
 
-  if(loadingData) {
+  if(loadingDataImg) {
     return (
       <div id='loadingData'>
-        <p id='loadingData-text'>
-          Đang tải dữ liệu ảnh!
+        <p id='loadingDataImg-text'>
+          Đang tải dữ
+        </p>
+        <p id='loadingDataImg-text'>
+          liệu của sách!
         </p>
       </div>
     )
   }
 
-  if(error) {
-    <div id='error'>
-      <p id='error-text'>
-        Gặp lỗi: <b>{error}</b>
+  if(errorImg) {
+    <div id='errorImg'>
+      <p id='errorImg-text'>
+        Gặp lỗi: <b>{errorImg}</b>
       </p>
     </div>
   }
   
   // lấy ảnh đại diện
-  let dataImage:string = "";
-  if(listImgBook[0] && listImgBook[0].dataImage) {
-    dataImage = listImgBook[0].dataImage;
-  }
+  let dataImage:string = listImgBook[0]?.dataImage || AvtImage;
+
+  // let dataImage:string = "";
+  // if(listImgBook[0] && listImgBook[0].dataImage) {
+  //   dataImage = listImgBook[0].dataImage;
+  // }
   
 
   return (
@@ -80,15 +85,16 @@ const CardBookHome: React.FC<BookProps> = (props) => {
       <div id="cardHome_blk1">
         <a href="#" id="cardHome_blk1-link">
           <div className="cardHome_blk1-imgs">
-            {/* {listImgBook[0].dataImage && */}
-            {/* {dataImage && */}
-            <img
-              // src={`${listImgBook[0].dataImage}`}
-              src={dataImage}
-              alt="Ảnh sách"
-              className="cardHome_blk1-image"
-            />
-            {/* } */}
+            {!loadingDataImg && !errorImg && (
+              <img
+                // src={`${listImgBook[0].dataImage}`}
+                src={dataImage}
+                alt="Ảnh sách"
+                className="cardHome_blk1-image"
+              />
+            )}
+            
+            
             {/* {episode && (
               <div id="numberEp">
                 <p>{episode}</p>
