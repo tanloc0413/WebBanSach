@@ -18,14 +18,14 @@ const ListBookHome: React.FC = () => {
 
     useEffect(() => {
         getAllTheBooks()
-        .then(bookData => {
+        .then(rsBookData => {
             // In danh sách các quyển sách
-            console.log("Dữ liệu sách nhận được:", bookData);
+            console.log("Dữ liệu sách nhận được:", rsBookData.result);
             // Lấy ra danh sách book
-            setListBook(bookData);
+            setListBook(rsBookData.result);
             // hiển thị random card sách
             setDisplayedBooks(
-                shuffleArray([...bookData])
+                shuffleArray([...rsBookData.result])
                 .slice(0, 18)
             );
             setLoadingData(false);
@@ -100,7 +100,6 @@ const ListBookHome: React.FC = () => {
                     <div id='blk_listBook-card'>
                         {
                             displayedBooks
-                                // .slice(0, 18)
                                 .map((books) => (
                                 <CardBookHome
                                     key={books.bookId}

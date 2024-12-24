@@ -12,9 +12,9 @@ const ListNewBookHome: React.FC = () => {
 
     useEffect(() => {
         getTheLastestBook()
-        .then(newBookData => {
-            console.log("Sách mới: ", newBookData)
-            setListBook(newBookData)
+        .then(rsNewBook => {
+            console.log("Sách mới: ", rsNewBook.result)
+            setListBook(rsNewBook.result)
             setLoadingData(false);
         })
         .catch(error => {

@@ -1,0 +1,72 @@
+<Pagination.Item>{1}</Pagination.Item>
+<Pagination.Item>{2}</Pagination.Item>
+<Pagination.Item>{3}</Pagination.Item>
+<Pagination.Ellipsis />
+<Pagination.Item>{10}</Pagination.Item>
+<Pagination.Item>{11}</Pagination.Item>
+<Pagination.Item active>{12}</Pagination.Item>
+<Pagination.Item>{13}</Pagination.Item>
+<Pagination.Item disabled>{14}</Pagination.Item>
+<Pagination.Ellipsis />
+<Pagination.Item>{20}</Pagination.Item>
+
+
+<nav aria-label="Page navigation example">
+    <ul className="pagination">
+      <li className="page-item">
+        <a className="page-link" href={props.pgnPage(1)} aria-label="Previous" onClick={props.pgnPage(1)}>
+          <span aria-hidden="true">&laquo;</span>
+          <span className="sr-only">First Page</span>
+        </a>
+      </li>
+      {/* <li className="page-item">
+        <a className="page-link" href="#">1</a>
+      </li> */}
+      {
+        listPage.map(pages => (
+          <li className="page-item" key={pages} onClick={props.pgnPage(pages)}>
+            <a className="page-link" onClick={props.pgnPage(1)}>
+              {pages}
+            </a>
+          </li> 
+        ))
+      }
+      {/* <li className="page-item">
+        <a className="page-link" href="#">3</a>
+      </li> */}
+      <li className="page-item">
+        <a className="page-link" href="#" aria-label="Next" onClick={props.pgnPage(props.totalPage)}>
+          <span aria-hidden="true">&raquo;</span>
+          <span className="sr-only">Next</span>
+        </a>
+      </li>
+    </ul>
+</nav>
+
+
+{/* <Pagination>
+        <Pagination.First
+          // href={props.pgnPage(1)}
+          onClick={() => props.pgnPage(1)}
+        />
+        <Pagination.Prev />
+        
+        {
+          listPage.map(page => ( 
+            <Pagination.Item
+              key={page}
+              onClick={() => props.pgnPage(page)}
+              className={(props.currentPage === page?'active':'')}
+              // href={props.currentPage}
+            >
+              {page}
+            </Pagination.Item>
+          ))
+        }
+        
+        <Pagination.Next />
+        <Pagination.Last
+          onClick={() => props.pgnPage(props.totalPage)}
+          
+        />
+      </Pagination> */}

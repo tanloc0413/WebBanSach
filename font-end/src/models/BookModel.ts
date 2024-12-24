@@ -7,7 +7,6 @@ class BookModel {
     evaluate?: number;
     listPrice?: number;
     price?: number;
-    // imgUrl?: string;
     quantity?: number;
 
     constructor (
@@ -18,7 +17,6 @@ class BookModel {
         evaluate?: number,
         listPrice?: number,
         price?: number,
-        // imgUrl?: string,
         quantity?: number
     ) {
         this.bookId = bookId;

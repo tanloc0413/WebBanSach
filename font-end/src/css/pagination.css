@@ -1,0 +1,22 @@
+:root {
+    --bs-secondary-bg: #e9ecef!important;
+}
+
+#pgn_block {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.pagination {
+    --bs-pagination-padding-x: 1rem!important;
+    --bs-pagination-padding-y: 0.5rem!important;
+    --bs-pagination-font-size: 1.2rem!important;
+    /* --bs-pagination-hover-border-color: none */
+}
+
+

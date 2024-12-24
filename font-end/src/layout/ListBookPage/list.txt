@@ -1,0 +1,92 @@
+
+// import React, { useEffect, useState } from 'react';
+
+// import '../../css/listBooks.css';
+// import { CiFilter } from "react-icons/ci";
+// import CardBook from '../Card/CardBook';
+// import BookModel from '../../models/BookModel';
+// import { getAllTheBooks } from '../../api/BookAPI';
+// import { PaginationPage } from '../Utils/PaginationPage';
+
+// const ListBook: React.FC = () => {
+//   const [listBook, setListBook] = useState<BookModel[]>([]);
+//   const [loadingData, setLoadingData] = useState(true);
+//   const [error, setError] = useState<string | null>(null);
+
+//   // Phân trang
+//   const [currentPage, setCurrentPage] = useState(1); // Trang hiện tại
+//   const booksPerPage = 24; // Số sách trên mỗi trang
+
+//   // Tính tổng số trang
+//   const totalPage = Math.ceil(listBook.length / booksPerPage);
+
+//   // Tính danh sách sách của trang hiện tại
+//   const indexOfLastBook = currentPage * booksPerPage;
+//   const indexOfFirstBook = indexOfLastBook - booksPerPage;
+//   const currentBooks = listBook.slice(indexOfFirstBook, indexOfLastBook);
+
+//   // Lấy dữ liệu từ API
+//   useEffect(() => {
+//     getAllTheBooks()
+//       .then(bookData => {
+//         console.log("Dữ liệu sách nhận được:", bookData);
+//         setListBook(bookData);
+//         setLoadingData(false);
+//       })
+//       .catch(error => {
+//         setError(error.message);
+//         setLoadingData(false);
+//       });
+//   }, []);
+
+//   // Xử lý khi chuyển trang
+//   const handlePageChange = (page: number) => {
+//     setCurrentPage(page);
+//   };
+
+//   if (loadingData) {
+//     return <p>Đang tải dữ liệu...</p>;
+//   }
+
+//   if (error) {
+//     return <p>Có lỗi xảy ra: {error}</p>;
+//   }
+
+//   return (
+//     <div id="listAllBook">
+//       <div id="listAllBook_block1">
+//         <div id="LABook1">
+//           <div id="LABook1_block1">
+//             <p id="LABook1_block1-text">Sách</p>
+//           </div>
+//           <div id="LABook1_block2">
+//             <CiFilter className="LABook1-icon" />
+//           </div>
+//         </div>
+//       </div>
+//       <div id="listAllBook_block2">
+//         <div id="LABook2">
+//           <div id="LABook2_blk1">
+//             <p>Danh sách các sách:</p>
+//           </div>
+//           <div id="LABook2_blk2">
+//             <div id="LABook2_blk2-list">
+//               {
+//                 currentBooks.map((book) => (
+//                   <CardBook key={book.bookId} books={book} />
+//                 ))
+//               }
+//             </div>
+//             <PaginationPage
+//               currentPage={currentPage}
+//               totalPage={totalPage}
+//               pgnPage={handlePageChange}
+//             />
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ListBook;
