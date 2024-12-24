@@ -7,18 +7,16 @@ interface ResultInterface {
     totalBook: number;
 }
 
-async function getBooks(path:string):Promise<ResultInterface> {
+async function getBooks(path: string):Promise<ResultInterface> {
     const result:BookModel[] = [];
 
     // Gọi phương thức request
     const response = await myRequest(path);
 
-    // console.log('Dữ liệu trả về từ API:', response);
-
     // Lấy ra json sách
     const responseData = response._embedded.books;
 
-    // console.log(responseData);
+    // console.log('Dữ liệu trả về từ API:', responseData);
 
     // Lấy thông tin trang
     const totalPage:number = response.page.totalPages;
@@ -45,7 +43,7 @@ async function getBooks(path:string):Promise<ResultInterface> {
     };
 }
 
-// lấy danh sách sách
+// Lấy danh sách tất cả sách
 export async function getAllTheBooks():Promise<ResultInterface> {
     // Xác định endpoint
     const path:string = 'http://localhost:8080/sach';
@@ -53,7 +51,7 @@ export async function getAllTheBooks():Promise<ResultInterface> {
     return getBooks(path);
 }
   
-// lấy danh sách sách có phân trang
+// Lấy danh sách tất cả sách có phân trang
 export async function getAllTheBookPagination(currentPage: number):Promise<ResultInterface> {
     // Xác định endpoint
     const path:string = `http://localhost:8080/sach?sort=bookId,asc&size=15&page=${currentPage}`;
@@ -61,9 +59,29 @@ export async function getAllTheBookPagination(currentPage: number):Promise<Resul
     return getBooks(path);
 }
 
+// Lấy quyển sách mới nhất
 export async function getTheLastestBook():Promise<ResultInterface> {
     // Xác định endpoint
     const path:string = 'http://localhost:8080/sach?sort=bookId,desc';
 
+    return getBooks(path);
+}
+
+// Tìm kiếm sách
+export async function findBook(searchKeyword: string):Promise<ResultInterface> {
+    // Xác định endpoint
+    let path:string = 'http://localhost:8080/sach?sort=bookId,desc&page=0';
+    if(searchKeyword !== '') {
+        path = `http://localhost:8080/sach/search/findByBookNameContaining?sort=bookId,desc&page=0&bookName=${searchKeyword}`
+    }
+
+    return getBooks(path);
+}
+
+// Lấy danh sách tất cả sách có phân trang
+export async function getTheBookPagination(currentPage: number):Promise<ResultInterface> {
+    // Xác định endpoint
+    const path:string = `http://localhost:8080/sach?sort=bookId,asc&size=18&page=${currentPage}`;
+    
     return getBooks(path);
 }

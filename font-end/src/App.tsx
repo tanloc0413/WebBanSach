@@ -3,17 +3,22 @@ import RoutePage from './route/RoutePage';
 import Header from './layout/Header/Header';
 import Footer from './layout/Footer/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import { getAllTheBooks } from './api/BookAPI';
+import { useState } from 'react';
 
 function App() {
-
-  // getAllTheBooks().then().catch();
+  const [searchKeyword, setSearchKeyword] = useState('');
+  
 
   return (
     <div className="App">
-      <Header/>
+      <Header
+        searchKeyword={searchKeyword}
+        setSearchKeyword={setSearchKeyword}
+      />
       <div id='app-container'>
-        <RoutePage/>
+        <RoutePage
+          searchKeyword={searchKeyword}
+        />
       </div>
       <Footer/>
     </div>

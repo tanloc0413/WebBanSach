@@ -8,7 +8,7 @@ import { getAllTheBookPagination } from '../../api/BookAPI';
 import Card from '../Card/Card';
 import { PaginationPage } from '../Utils/PaginationPage';
 
-const ListBook: React.FC = () =>  {
+const ListBook: React.FC = () => {
   const[listBook, setListBook] = useState<BookModel[]>([]);
   const[loadingData, setLoadingData] = useState(true);
   const[error, setError] = useState(null);
@@ -102,9 +102,6 @@ const ListBook: React.FC = () =>  {
               currentPage={currentPage}
               totalPage={totalPage}
               pgnPage={pgnPage}
-              // currentPage={1}
-              // totalPage={20}
-              // pgnPage={pgnPage}
             />
           </div>
         </div>

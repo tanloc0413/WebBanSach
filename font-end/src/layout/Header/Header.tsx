@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { IoMdSearch } from "react-icons/io";
 import { IoCartOutline } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
@@ -11,9 +11,44 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 // files
 import '../../css/header.css';
 import LogoIcon from '../../imgs/logo-web.png';
+import { useNavigate } from 'react-router-dom';
 
+interface AppProps {
+  searchKeyword: string;
+  setSearchKeyword: (keyword: string) => void;
+}
 
-function Header() {
+function Header({searchKeyword, setSearchKeyword}: AppProps) {
+  const navigate = useNavigate();
+  const[tprKeyword, setTprKeyword] = useState('');
+
+  // xử lý tìm kiếm
+  const onSearchInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    // setSearchKeyword(e.target.value);
+    // từ khóa tạm thời tempory keyword
+    setTprKeyword(e.target.value);
+  }
+
+  // xử lý tìm kiếm
+  const handleSearch = () => {
+    // setSearchKeyword(tprKeyword)
+    if (tprKeyword.trim() !== '') {
+      // navigate(`/tim-kiem?keyword=${encodeURIComponent(searchKeyword)}`);
+      // setSearchKeyword(tprKeyword);
+      setSearchKeyword(tprKeyword);
+      // navigate(`/tim-kiem/${encodeURIComponent(searchKeyword)}`);
+      navigate(`/tim-kiem/${encodeURIComponent(tprKeyword)}`);
+      // setSearchKeyword(tprKeyword);
+    }
+  }
+
+  // xử lý tìm kiếm khi nhấn enter
+  const onSearchKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <header id='header'>
       <div id='blk_header1'>
@@ -21,9 +56,18 @@ function Header() {
           <img id='header_logo-img' src={LogoIcon} alt='Logo'/>
         </a>
         <div id='blk_search'>
-          <input type='search' placeholder='Tìm kiếm' id='input-search'/>
+          <input
+            type='search'
+            placeholder='Tìm kiếm'
+            id='input-search'
+            onChange={onSearchInputChange}
+            value={tprKeyword}
+            onKeyDown={onSearchKeyPress}
+          />
           <div id='blk_search-icon'>
-            <button id='search'>
+            <button id='search'
+              onClick={handleSearch}
+            >
               <IoMdSearch className='search-icon'/>
             </button>
           </div>
