@@ -17,7 +17,7 @@ class BookModel {
         evaluate?: number,
         listPrice?: number,
         price?: number,
-        quantity?: number
+        quantity?: number,
     ) {
         this.bookId = bookId;
         this.bookName = bookName;

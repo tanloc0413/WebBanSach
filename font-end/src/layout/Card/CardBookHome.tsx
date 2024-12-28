@@ -11,6 +11,7 @@ import BookModel from '../../models/BookModel';
 import BookImageModel from '../../models/BookImageModel';
 import { getAllImageOfTheBooks, getFirstImgBook } from '../../api/ImageBookAPI';
 import AvtImage from '../../imgs/avatar books.jpg';
+import { slugify } from '../../models/Converts';
 
 interface BookProps {
   books: BookModel;
@@ -74,10 +75,8 @@ const CardBookHome: React.FC<BookProps> = (props) => {
   // lấy ảnh đại diện
   let dataImage:string = listImgBook[0]?.dataImage || AvtImage;
 
-  // let dataImage:string = "";
-  // if(listImgBook[0] && listImgBook[0].dataImage) {
-  //   dataImage = listImgBook[0].dataImage;
-  // }
+  // Convert tên sách thành slug
+  const bookSlug = slugify(props.books.bookName || '');
   
 
   return (
@@ -104,7 +103,7 @@ const CardBookHome: React.FC<BookProps> = (props) => {
         </a>
       </div>
       <div id="cardHome_blk2">
-        <a href="#" id="cardHome_blk2-link">
+        <a href={`/sach/${bookId}/${bookSlug}`} id="cardHome_blk2-link">
           <p className="cardHome_blk2-title">
             {props.books.bookName}
           </p>

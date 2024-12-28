@@ -1,0 +1,15 @@
+    const [showMoreBtn, setShowMoreBtn] = useState(false);
+
+    const ref = useRef(null);
+
+    useEffect(() => {
+        if(ref.current) {
+            setShowMoreBtn (
+                ref.current.scrollHeight !== ref.current.clientHeight
+            )
+        }
+    }, [])
+
+    {
+                    showMoreBtn && ()
+                }

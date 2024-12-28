@@ -18,6 +18,7 @@ import AvtImage from '../../imgs/avatar books.jpg';
 // import { BsCartPlus } from 'react-icons/bs';
 
 import '../../css/cardBook.css';
+import { slugify } from '../../models/Converts';
 
 interface BookProps {
   book: {
@@ -30,9 +31,9 @@ interface BookProps {
 }
 
 const Card: React.FC<BookProps> = ({ book }) => {
-    const [isFollowed, setIsFollowed] = useState<boolean>(
-        JSON.parse(localStorage.getItem(`followed-${book.id}`) || 'false')
-      );
+  const [isFollowed, setIsFollowed] = useState<boolean>(
+    JSON.parse(localStorage.getItem(`followed-${book.id}`) || 'false')
+  );
 
   const handleFollowBook = () => {
     setIsFollowed((prevFollowed: boolean) => {
@@ -42,6 +43,8 @@ const Card: React.FC<BookProps> = ({ book }) => {
     });
   };
   
+  // Convert tên sách thành slug
+  // const bookSlug = slugify(props.books.bookName || '');
 
   return (
     <div id="cardBook">

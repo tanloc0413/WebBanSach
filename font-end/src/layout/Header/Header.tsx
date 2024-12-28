@@ -11,7 +11,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 // files
 import '../../css/header.css';
 import LogoIcon from '../../imgs/logo-web.png';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface AppProps {
   searchKeyword: string;
@@ -21,10 +21,10 @@ interface AppProps {
 function Header({searchKeyword, setSearchKeyword}: AppProps) {
   const navigate = useNavigate();
   const[tprKeyword, setTprKeyword] = useState('');
+  // const [categoryName, setCategoryName] = useState('');
 
   // xử lý tìm kiếm
   const onSearchInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    // setSearchKeyword(e.target.value);
     // từ khóa tạm thời tempory keyword
     setTprKeyword(e.target.value);
   }
@@ -33,11 +33,9 @@ function Header({searchKeyword, setSearchKeyword}: AppProps) {
   const handleSearch = () => {
     // setSearchKeyword(tprKeyword)
     if (tprKeyword.trim() !== '') {
-      // navigate(`/tim-kiem?keyword=${encodeURIComponent(searchKeyword)}`);
-      // setSearchKeyword(tprKeyword);
       setSearchKeyword(tprKeyword);
-      // navigate(`/tim-kiem/${encodeURIComponent(searchKeyword)}`);
       navigate(`/tim-kiem/${encodeURIComponent(tprKeyword)}`);
+      // navigate(`/tim-kiem/${encodeURIComponent(tprKeyword)}/the-loai/${encodeURIComponent(categoryName)}`);
       // setSearchKeyword(tprKeyword);
     }
   }
@@ -52,9 +50,9 @@ function Header({searchKeyword, setSearchKeyword}: AppProps) {
   return (
     <header id='header'>
       <div id='blk_header1'>
-        <a id='blk_logo' href='/'>
+        <Link id='blk_logo' to={'/'}>
           <img id='header_logo-img' src={LogoIcon} alt='Logo'/>
-        </a>
+        </Link>
         <div id='blk_search'>
           <input
             type='search'

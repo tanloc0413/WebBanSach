@@ -1,14 +1,31 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useParams } from 'react-router-dom';
 import HomePage from '../layout/HomePage/HomePage';
 import ListBook from '../layout/ListBookPage/ListBook';
 import SearchResultList from '../layout/SearchResultPage/SearchResultList';
+import BookDetail from '../layout/BookDetail/BookDetail';
+import TestBook from '../layout/TestBook';
 
 interface RoutePageProps {
   searchKeyword: string;
 }
 
 export default function RoutePage({ searchKeyword }: RoutePageProps) {
+  const { searchKeywordUrl, categoryName } = useParams();
+  // let categoryIdNumber = 0;
+
+  // try {
+  //   categoryIdNumber = parseInt(categoryId + '');
+
+  // } catch(error) {
+  //   categoryIdNumber = 0;
+  //   console.log("Lỗi: ", error)
+  // }
+
+  // if(Number.isNaN(categoryIdNumber)) {
+  //   categoryIdNumber = 0;
+  // }
+
   return (
     <Routes>
       <Route index element={<HomePage/>}/>
@@ -21,6 +38,27 @@ export default function RoutePage({ searchKeyword }: RoutePageProps) {
           />
         }
       />
+      <Route
+        path='/sach/:bookId'
+        element={<BookDetail/>}
+      />
+      <Route
+        path='/mau'
+        element={<TestBook/>}
+      />
+      {/* <Route
+        path='/tim-kiem/the-loai/:categoryName'
+        element={
+          <SearchResultList
+            searchKeyword={searchKeywordUrl || ''}
+            categoryName={categoryName || ''}
+          />
+        }
+      /> */}
+      {/* <Route
+        path='/tim-kiem/the-loai/:categoryName'
+        element={<SearchResultList searchKeyword={searchKeyword} categoryName={categoryName || ''} />}
+      /> */}      
     </Routes>
   )
 }

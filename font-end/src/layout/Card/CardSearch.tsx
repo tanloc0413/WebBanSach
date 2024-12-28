@@ -4,12 +4,14 @@ import { MdFavoriteBorder } from 'react-icons/md';
 import { IoHeartDislikeOutline } from 'react-icons/io5';
 import { BsCartPlus } from 'react-icons/bs';
 import { IoCartOutline } from 'react-icons/io5';
+import { Link } from 'react-router-dom';
 
 import '../../css/cardBook.css';
 import BookModel from '../../models/BookModel';
 import BookImageModel from '../../models/BookImageModel';
 import { getFirstImgBook } from '../../api/ImageBookAPI';
 import AvtImage from '../../imgs/avatar books.jpg';
+import { slugify } from '../../models/Converts';
 
 interface BookProps {
     books: BookModel;
@@ -73,6 +75,9 @@ const CardSearch: React.FC<BookProps> = (props) => {
     // lấy ảnh đại diện
     let dataImage:string = listImgBook[0]?.dataImage || AvtImage;
 
+    // Convert tên sách thành slug
+    const bookSlug = slugify(props.books.bookName || '');
+
     return (
         <div id="cardBook">
             <div id="cardBook_blk1">
@@ -90,11 +95,11 @@ const CardSearch: React.FC<BookProps> = (props) => {
                 </a>
             </div>
             <div id="cardBook_blk2">
-                <a href="#" id="cardBook_blk2-link">
+                <Link to={`/sach/${bookId}/${bookSlug}`} id="cardBook_blk2-link">
                     <p className="cardBook_blk2-title">
                         {props.books.bookName}
                     </p>
-                </a>
+                </Link>
                 <div id="cardBook_blk2-bookshelf">
                     <div id="block2_bookshelf">
                         <p id="block2_bookshelf-price">

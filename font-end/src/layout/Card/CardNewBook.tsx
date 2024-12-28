@@ -1,12 +1,14 @@
-import { formatCurrency, formatNumberCurrency } from '../../models/FormatMoney';
-
 import '../../css/cardNewBook.css';
 import BookModel from '../../models/BookModel';
 import { useEffect, useState } from 'react';
 // import { getTheLastestBook } from '../../api/BookAPI';
 import BookImageModel from '../../models/BookImageModel';
 import AvtImage from '../../imgs/avatar books.jpg';
-import { getAllImageOfTheBooks, getFirstImgBook } from '../../api/ImageBookAPI';
+import { getFirstImgBook } from '../../api/ImageBookAPI';
+import { formatCurrency, formatNumberCurrency } from '../../models/FormatMoney';
+import { slugify } from '../../models/Converts';
+import { Link } from 'react-router-dom';
+
 
 interface BookProps {
   books: BookModel;
@@ -69,6 +71,9 @@ const CardNewBook: React.FC<BookProps> = (props) => {
 
   const discountText = `-${Math.round(discountPercentage)}%`;
 
+  // Convert tên sách thành slug
+  const bookSlug = slugify(props.books.bookName || '');
+
   return (
     <div id='cardNewBook'>
       <div id='cardNewBook_blk1'>
@@ -89,11 +94,11 @@ const CardNewBook: React.FC<BookProps> = (props) => {
         </a>
       </div>
       <div id='cardNewBook_blk2'>
-        <a href="#" id='cardNewBook_blk2-link'>
+        <Link to={`/sach/${bookId}`} id='cardNewBook_blk2-link'>
           <p className='cardNewBook_blk2-title'>
             {props.books.bookName}
           </p>
-        </a>
+        </Link>
         <div id='cardNewBook_blk2-bookshelf'>
           <div id='blk2_bookshelf'>
             <div id='blk2_bookshelf-price'>

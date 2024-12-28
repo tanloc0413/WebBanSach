@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Spinner from 'react-bootstrap/Spinner';
+
 
 import '../../css/listBookHome.css';
 import BookModel from '../../models/BookModel';
@@ -20,7 +22,7 @@ const ListBookHome: React.FC = () => {
         getAllTheBooks()
         .then(rsBookData => {
             // In danh sách các quyển sách
-            console.log("Dữ liệu sách nhận được:", rsBookData.result);
+            // console.log("Dữ liệu sách nhận được:", rsBookData.result);
             // Lấy ra danh sách book
             setListBook(rsBookData.result);
             // hiển thị random card sách
@@ -55,12 +57,15 @@ const ListBookHome: React.FC = () => {
         return (
             <div id='blk_loadingData'>
                 <div id='loadingData'>
-                    <p id='loadingData-text'>
+                    <Spinner animation="border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                    {/* <p id='loadingData-text'>
                         Đang tải dữ
                     </p>
                     <p id='loadingData-text'>
                         liệu của sách!
-                    </p>
+                    </p> */}
                 </div>
             </div>      
         )

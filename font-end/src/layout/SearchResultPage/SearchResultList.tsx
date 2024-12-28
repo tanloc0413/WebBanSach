@@ -5,14 +5,15 @@ import BookModel from '../../models/BookModel';
 import '../../css/searchResult.css';
 import { PaginationPage } from '../Utils/PaginationPage';
 import CardSearch from '../Card/CardSearch';
-import { useLocation, useParams } from 'react-router-dom';
+// import { useLocation, useParams } from 'react-router-dom';
 import SearchNotFound from '../../imgs/search not found.gif';
 
 interface SearchResultProps {
     searchKeyword: string;
+    // categoryName: string;
 }
 
-function SearchResultList({searchKeyword}: SearchResultProps) {
+function SearchResultList({ searchKeyword }: SearchResultProps) {
     // Xử lý dữ liệu
     const[listBook, setListBook] = useState<BookModel[]>([]);
     const[loadingData, setLoadingData] = useState(true);
@@ -40,9 +41,9 @@ function SearchResultList({searchKeyword}: SearchResultProps) {
             })
         }
         else {
+            // Tìm kiếm theo từ khóa
             findBook(searchKeyword)
             .then(rs => {
-                // In danh sách các quyển sách
                 console.log("API của sách:", rs.result);
                 // Lấy ra danh sách book
                 setListBook(rs.result);
@@ -53,7 +54,12 @@ function SearchResultList({searchKeyword}: SearchResultProps) {
                 setError(error.message);
             })
         }
-    }, [currentPage, searchKeyword]);
+    }, [
+        currentPage, 
+        searchKeyword 
+        // categoryName
+    ]);
+
 
     // Load dữ liệu các quyển sách
     if(loadingData) {
@@ -90,7 +96,6 @@ function SearchResultList({searchKeyword}: SearchResultProps) {
     }
 
     // Xử lý tìm kiếm
-    //  || listBook.length = ''
     const searchResult = listBook.length === 0;
     if(searchResult) {
         return (

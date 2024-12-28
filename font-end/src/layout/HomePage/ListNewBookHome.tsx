@@ -1,9 +1,11 @@
 
 import { useEffect, useState } from 'react';
+import Spinner from 'react-bootstrap/Spinner';
 
 import BookModel from '../../models/BookModel';
 import { getTheLastestBook } from '../../api/BookAPI';
 import CardNewBook from '../Card/CardNewBook';
+
 
 const ListNewBookHome: React.FC = () => {
     const[listBook, setListBook] = useState<BookModel[]>([]);
@@ -13,7 +15,7 @@ const ListNewBookHome: React.FC = () => {
     useEffect(() => {
         getTheLastestBook()
         .then(rsNewBook => {
-            console.log("Sách mới: ", rsNewBook.result)
+            // console.log("Sách mới: ", rsNewBook.result)
             setListBook(rsNewBook.result)
             setLoadingData(false);
         })
@@ -27,12 +29,15 @@ const ListNewBookHome: React.FC = () => {
         return (
             <div id='blk_loadingData'>
                 <div id='loadingData'>
-                    <p id='loadingData-text'>
+                    {/* <p id='loadingData-text'>
                         Đang tải dữ
                     </p>
                     <p id='loadingData-text'>
                         liệu của sách!
-                    </p>
+                    </p> */}
+                    <Spinner animation="border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </Spinner>
                 </div>
             </div>      
         )

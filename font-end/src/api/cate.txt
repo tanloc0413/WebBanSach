@@ -1,0 +1,30 @@
+import BookModel from "../models/BookModel";
+// import { myRequest } from "./Request";
+
+// interface ResultInterface {
+//     result: BookModel[];
+// }
+
+// async function getCategroy(path: string):Promise<ResultInterface> {
+//     const result:BookModel[] = [];
+
+//     // Gọi phương thức request
+//     const response = await myRequest(path);
+
+//     // Lấy ra json sách
+//     const responseData = response._embedded.books;
+    
+//     for(const key in responseData) {
+//         result.push ({
+
+//         })
+//     }
+// }
+
+// // Lấy danh sách tất cả sách
+// export async function getCategory():Promise<ResultInterface> {
+//     // Xác định endpoint
+//     const path:string = 'http://localhost:8080/the-loai';
+    
+//     return getCategroy(path);
+// }
