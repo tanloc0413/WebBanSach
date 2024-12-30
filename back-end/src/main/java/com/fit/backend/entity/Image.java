@@ -1,4 +1,4 @@
-package com.fit.backend.model;
+package com.fit.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

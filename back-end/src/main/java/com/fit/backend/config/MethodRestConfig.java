@@ -1,6 +1,6 @@
 package com.fit.backend.config;
 
-import com.fit.backend.model.User;
+import com.fit.backend.entity.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.metamodel.Type;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,19 +34,21 @@ public class MethodRestConfig implements RepositoryRestConfigurer {
         // cor configuration
         cors.addMapping("/**")
                 .allowedOrigins(url)
-                .allowedMethods("GET", "POST", "PUT", "DELETE");
-
-        disableHttpMethods(User.class, config, blockMethods );
-    }
-
-    private void disableHttpMethods(Class c,
-                              RepositoryRestConfiguration config,
-                              HttpMethod[] methods) {
-        config.getExposureConfiguration()
-                .forDomainType(c)
-                .withItemExposure((metdata, httpMethods) -> httpMethods.disable(methods))
-                .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(methods))
+                .allowedMethods("GET", "POST", "PUT", "DELETE")
+//                .allowedHeaders("*")
+//                .allowCredentials(true)
         ;
-
+//        disableHttpMethods(User.class, config, blockMethods );
     }
+
+//    private void disableHttpMethods(Class c,
+//                              RepositoryRestConfiguration config,
+//                              HttpMethod[] methods) {
+//        config.getExposureConfiguration()
+//                .forDomainType(c)
+//                .withItemExposure((metdata, httpMethods) -> httpMethods.disable(methods))
+//                .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(methods))
+//        ;
+//
+//    }
 }

@@ -1,4 +1,4 @@
-package com.fit.backend.model;
+package com.fit.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -29,8 +29,8 @@ public class User {
     @Column(name = "first_name")
     private String firstName; // tên
 
-    @Column(name = "sex", length = 3)
-    private char sex;
+    @Column(name = "sex", length = 5)
+    private String sex;
 
     @Column(name = "number_phone")
     private String numberPhone;
