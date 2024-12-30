@@ -72,12 +72,12 @@ const CardNewBook: React.FC<BookProps> = (props) => {
   const discountText = `-${Math.round(discountPercentage)}%`;
 
   // Convert tên sách thành slug
-  const bookSlug = slugify(props.books.bookName || '');
+  // const bookSlug = slugify(props.books.bookName || '');
 
   return (
     <div id='cardNewBook'>
       <div id='cardNewBook_blk1'>
-        <a href="#" id='cardNewBook_blk1-link'>
+        <a href={`/sach/${bookId}`} id='cardNewBook_blk1-link'>
           <div className='cardNewBook_blk1-imgs'>
             {!loadingDataImg && !errorImg && (
               <img

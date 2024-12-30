@@ -106,9 +106,14 @@
     font-weight: 600;
 }
 
-#evaluateBD_feedback-block {
+#evaluateBD_feedback-blk {
     width: 100%;
     margin-top: 15px;
+}
+
+#evaluateBD_feedback-block {
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 #feedback_user {

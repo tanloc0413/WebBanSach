@@ -38,7 +38,7 @@ const Card: React.FC<BookProps> = ({ book }) => {
   const handleFollowBook = () => {
     setIsFollowed((prevFollowed: boolean) => {
       const newState = !prevFollowed; // Đảo trạng thái
-      localStorage.setItem(`followed-${book.id}`, JSON.stringify(newState)); // Lưu vào localStorage
+      localStorage.setItem(`followed-${book.id}`, JSON.stringify(newState));
       return newState; // Trả về trạng thái mới
     });
   };

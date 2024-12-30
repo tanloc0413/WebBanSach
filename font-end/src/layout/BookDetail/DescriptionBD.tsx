@@ -2,34 +2,52 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import '../../css/descriptionBD.css';
 
-function DescriptionBD() {
-    const [isOpen, setIsOpen] = useState(false);
 
-    
+interface BookProps {
+    bookId: number;
+    description: string;
+}
+
+const DescriptionBD: React.FC<BookProps> = ({ description }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [isLongText, setIsLongText] = useState(false);
+    const descriptionRef = useRef<HTMLParagraphElement>(null);
+
+    useEffect(() => {
+        if (descriptionRef.current) {
+            // Kiểm tra chiều cao của đoạn mô tả
+            const maxHeight = parseFloat(getComputedStyle(descriptionRef.current).lineHeight || '20') * 5; // 5 dòng
+            if (descriptionRef.current.scrollHeight > maxHeight) {
+                setIsLongText(true); // Nếu chiều cao thực tế > chiều cao tối đa, kích hoạt nút
+            }
+        }
+    }, [description]);
+
+    const descriptionText = description || '';
+
     return (
         <div id='review_description'>
             <p id='review_description-title'>
                 Mô tả sản phẩm
             </p>
             <div id='review_description-block'>
-                <p className={!isOpen ? 'review_description-show' : 'review_description-hidden'}>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas illum natus cupiditate aut delectus debitis reprehenderit quasi placeat consectetur! Mollitia iure neque inventore odio libero. Magnam quibusdam recusandae laboriosam molestias?
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil quos incidunt similique vitae cumque quam blanditiis unde fugiat voluptate numquam repellat harum maiores accusantium, provident cum. Qui quidem cumque et.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem suscipit qui totam cum fugit quod esse vel, animi ea perferendis quas, consequuntur ipsa, nisi eum deleniti voluptatibus quo accusantium vero.
-        
-                </p>
-
-            </div>
-            <div id='review_btn-block'>
-                <button
-                    // className={isOpen ? 'review_btn-seeMore2' : 'review_btn-seeMore1'}
-                    className='review_btn-seeMore'
-                    onClick={() => setIsOpen(!isOpen)}
+                <p 
+                    ref={descriptionRef}
+                    className={!isOpen ? 'review_description-show' : 'review_description-hidden'}
                 >
-                    {isOpen ? 'Thu gọn' : 'Xem thêm'}
-                </button>
-                    
+                    {descriptionText}
+                </p>
             </div>
+            {isLongText && (
+                <div id='review_btn-block'>
+                    <button
+                        className='review_btn-seeMore'
+                        onClick={() => setIsOpen(!isOpen)}
+                    >
+                        {isOpen ? 'Thu gọn' : 'Xem thêm'}
+                    </button>
+                </div>
+            )}
         </div>  
     )
 }

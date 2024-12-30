@@ -82,7 +82,7 @@ const CardBookHome: React.FC<BookProps> = (props) => {
   return (
     <div id="cardHome">
       <div id="cardHome_blk1">
-        <a href="#" id="cardHome_blk1-link">
+        <a href={`/sach/${bookId}`} id="cardHome_blk1-link">
           <div className="cardHome_blk1-imgs">
             {!loadingDataImg && !errorImg && (
               <img
@@ -103,7 +103,7 @@ const CardBookHome: React.FC<BookProps> = (props) => {
         </a>
       </div>
       <div id="cardHome_blk2">
-        <a href={`/sach/${bookId}/${bookSlug}`} id="cardHome_blk2-link">
+        <a href={`/sach/${bookId}`} id="cardHome_blk2-link">
           <p className="cardHome_blk2-title">
             {props.books.bookName}
           </p>

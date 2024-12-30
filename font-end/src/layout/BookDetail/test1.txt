@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Carousel } from 'react-responsive-carousel';
-import CircularProgress from '@mui/material/CircularProgress';
+import { CCarousel, CCarouselItem, CImage, CCarouselCaption } from '@coreui/react';
 
 import '../../css/imgBookDetail.css';
+import BookAvt from '../../imgs/book-test.jpg';
+import '../../css/cardBook.css';
+import BookModel from '../../models/BookModel';
 import { getAllImageOfTheBooks, getFirstImgBook } from '../../api/ImageBookAPI';
+import AvtImage from '../../imgs/avatar books.jpg';
 import { slugify } from '../../models/Converts';
 import BookImageModel from '../../models/BookImageModel';
 
@@ -21,11 +25,11 @@ const ImgBookDetail: React.FC<BookProps> = (props) => {
     const [listImgBook, setListImgBook] = useState<BookImageModel[]>([]);
     const [loadingDataImg, setLoadingDataImg] = useState(true);
     const [errorImg, setErrorImg] = useState(null);
-    const [imgSelecting, setImgSelecting] = useState<BookImageModel | null>(null);
+    // const [imgSelecting, setImgSelecting] = useState<BookImageModel | null>(null);
 
-    const imageSelect = (image: BookImageModel) => {
-        setImgSelecting(image);
-    }
+    // const imageSelect = (image: BookImageModel) => {
+    //     setImgSelecting(image);
+    // }
 
     // Lấy danh sách ảnh
     useEffect(() => {
@@ -33,9 +37,9 @@ const ImgBookDetail: React.FC<BookProps> = (props) => {
         .then(lists => {
             // consol e.log("Ảnh đã tải lên:", imageData);
             setListImgBook(lists);
-            if(lists.length > 0) {
-                setImgSelecting(lists[0])
-            }
+            // if(lists.length > 0) {
+            //     setImgSelecting(lists[0])
+            // }
             setLoadingDataImg(false);
         })
         .catch(errorImg => {
@@ -47,12 +51,14 @@ const ImgBookDetail: React.FC<BookProps> = (props) => {
 
     if(loadingDataImg) {
         return (
-            <div id='loadingBD'>
-                <CircularProgress
-                    color="inherit"
-                    id='loadingBD-img'
-                />
-            </div>
+          <div id='loadingData'>
+            <p id='loadingDataImg-text'>
+              Đang tải dữ liệu của sách!
+            </p>
+            {/* <p id='loadingDataImg-text'>
+              liệu của sách!
+            </p> */}
+          </div>
         )
       }
     
@@ -67,52 +73,48 @@ const ImgBookDetail: React.FC<BookProps> = (props) => {
     return (
         <div id='bdBlock1'>
             <div id='bdBlock1_avt-big'>
-                {imgSelecting && imgSelecting.dataImage && (
+                {/* {imgSelecting && imgSelecting.dataImage && ( */}
                     <img
-                        src={imgSelecting.dataImage}
+                        // src={imgSelecting.dataImage}
                         alt='ảnh bìa sách'
                         id='bdBlock1_avt-img'
                     />
-                )}
+                {/* )} */}
                 
             </div>
             <div id='bdBlock1_img-small'>
                 <div className='bdBlock1_img-small'>
-                    {/* <Carousel showArrows={true} showIndicators={true}> */}
+                    <Carousel showArrows={true} showIndicators={true}>
                         {
                             listImgBook.map((image, index) => (
                                 <div
-                                    // className='bdImg_block'
+                                    className='bdImg_block'
+                                    // key={index}
+                                    // onClick={() => imageSelect(image)}
+                                    // className={'carousel-item' + (index === 0 ? 'active' : '')}
                                     key={index}
-                                    onClick={() => imageSelect(image)}
-                                    className={`bdImg_block ${imgSelecting === image ? 'selected' : ''}`}
+                                    // onClick={() => imageSelect(image)}
                                 >
                                     <div className='bdImg_block-img'>
-                                        {/* <img 
+                                        <img 
                                             src={image.dataImage}
                                             alt={`${image.imageName}`}
                                             className='bdImg-img'
                                             // onClick={() => imageSelect(image)}
-                                        /> */}
-                                        {(image.dataImage) && 
+                                        />
+                                        {/* {(image.dataImage) && 
                                             (
-                                                <img 
-                                                    src={image.dataImage}
-                                                    alt={`${image.imageName}`}
-                                                    className='bdImg-img'
-                                                    // onClick={() => imageSelect(image)}
-                                                />   
+                                                
                                             )
-                                        }
+                                        } */}
                                     </div>
                                 </div>
                             ))
                         }
-                    {/* </Carousel> */}
+                    </Carousel>
                 </div>
             </div>
         </div>
-        
     )
 }
 

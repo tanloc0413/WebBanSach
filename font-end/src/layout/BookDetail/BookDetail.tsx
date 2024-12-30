@@ -1,37 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import { formatCurrency, formatNumberCurrency } from '../../models/FormatMoney';
-import { MdFavoriteBorder } from 'react-icons/md';
-import { IoHeartDislikeOutline } from 'react-icons/io5';
-import { BsCartPlus } from 'react-icons/bs';
-import { IoCartOutline } from 'react-icons/io5';
-import Container from '@mui/material/Container';
+import { formatCurrencyBD, formatNumberCurrency } from '../../models/FormatMoney';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Rating from '@mui/material/Rating';
-
+import CircularProgress from '@mui/material/CircularProgress';
+import { useParams } from 'react-router-dom';
 
 import '../../css/bookDetail.css';
 import BookModel from '../../models/BookModel';
-import BookImageModel from '../../models/BookImageModel';
-import { getAllImageOfTheBooks } from '../../api/ImageBookAPI';
-import AvtImage from '../../imgs/avatar books.jpg';
 import { slugify } from '../../models/Converts';
-import { useParams } from 'react-router-dom';
 import { getBookByBookId } from '../../api/BookAPI';
-import BookAvt from '../imgs/book-test.jpg';
 import EvaluateBD from './EvaluateBD';
 import OrderBD from './OrderBD';
 import DescriptionBD from './DescriptionBD';
 import InforBookDetail from './InforBookDetail';
 import ImgBookDetail from './ImgBookDetail';
+import FormatNumber from './FormatNumber';
+import AuthorModel from '../../models/AuthorModel';
+import { getAuthorName } from '../../api/AuthorAPI';
 
 const BookDetail:React.FC = () => {
-  const [isFollowed, setIsFollowed] = useState(false);
+  // danh sách về sách
   const [book, setBook] = useState<BookModel | null>(null);
-  const[loadingBook, setLoadingBook] = useState(true);
-  const[errorBook, setErrorBook] = useState(null);
-
+  const [loadingBook, setLoadingBook] = useState(true);
+  const [errorBook, setErrorBook] = useState(null);
+  // danh sách về tác giả
+  const [author, setAuthor] = useState<AuthorModel[]>([]);
+  const [loadingAuthor, setLoadingAuthor] = useState(true);
+  const [errorAuthor, setErrorAuthor] = useState<string | null>(null);
+  
   // lấy mã sách từ url
   const {bookId} = useParams();
 
@@ -58,20 +56,30 @@ const BookDetail:React.FC = () => {
     })
   }, [bookId]);
 
-  if(loadingBook) {
+  // lấy danh sách tác giả
+  useEffect(() => {
+    getAuthorName(bookIdNumber)
+    .then((authors) => {
+      setAuthor(authors);
+      setLoadingAuthor(false);
+    })
+    .catch((errorAuthor) => {
+      setErrorAuthor(errorAuthor.message);
+      setLoadingAuthor(false);
+    });
+  }, [bookId]);
+
+  if(loadingBook ) {
     return (
-      <div id='loadingData'>
-        <p id='loadingDataImg-text'>
-          Đang tải dữ
-        </p>
-        <p id='loadingDataImg-text'>
-          liệu của sách!
-        </p>
+      <div id='loadingBD'>
+        <CircularProgress
+          id='loadingBD-text'
+        />
       </div>
     )
   }
 
-  if(errorBook) {
+  if(errorBook || errorAuthor) {
     <div id='errorImg'>
       <p id='errorImg-text'>
         Gặp lỗi: <b>{errorBook}</b>
@@ -87,6 +95,17 @@ const BookDetail:React.FC = () => {
     )
   }
 
+  // tính số % giảm
+  const price = book.price ?? 0;
+  const listPrice = book.listPrice ?? 0;
+  let discountPercentage = 0;
+  
+  if (listPrice > 0 && price < listPrice) {
+    discountPercentage = ((listPrice - price) / listPrice) * 100;
+  }
+
+  const discountText = `-${Math.round(discountPercentage)}%`;
+
   return (
     <div id='bookDetail'>
       <div id='bookDetail_block0'>
@@ -101,7 +120,6 @@ const BookDetail:React.FC = () => {
             Trang Chủ
           </Link>
           <Link
-            // to={'/sach'}
             href='/sach'
             underline="hover"
             color="inherit"
@@ -116,73 +134,93 @@ const BookDetail:React.FC = () => {
               display: 'flex',
               alignItems: 'center'
             }}
-            className='block0_bookName-text block0-text'
+            className='block0_bookName-text'
           >
-            Tiêu đề
+            {book.bookName}
           </Typography>
         </Breadcrumbs>
       </div>
       <div id='bookDetail_block1'>
         <div id='bookDetail_blk-infor'>
           <div id='bdBlk1'>
-            <ImgBookDetail/>
+            <ImgBookDetail bookId={bookIdNumber}/>
           </div>
           <div id='bdBlk2'>
-              <div id='bdBlock2_review'>
-              {/* <DateVN/> */}
-                  <div id='review1'>
-                      <p id='review_bookName'>
-                          Những Trí Tuệ Vĩ Đại - Hawking: Người Đàn Ông Phi Thường, Một Thiên Tài Vĩ Đại Và Cha Đẻ Của Thuyết Vạn Vật
-                      </p>
-                      <p id='review_nameAuthor'>
-                          Tác giả: <a href="#"><span id='nameAuthor'>Nguyễn Nhật Ánh</span></a>
-                      </p>
-                      <div id='review_number'>
-                          <div id='review_number-evalute'>
-                              <p id='averageRating'>4.5</p>
-                              <Rating
-                                  name="half-rating-read"
-                                  defaultValue={5}
-                                  precision={0.25}
-                                  readOnly
-                                  className='evalute-start'
-                              />
-                              <p id='numberReview-text'>(46)</p>
-                          </div>
-                          <div id='review_symbol'>
-                              <p id='review_symbol-hr'>|</p>
-                              {/* <hr id='review_symbol-hr'/> */}
-                          </div>
-                          <div id='review_sold'>
-                              <p id='review_sold-text'>Đã bán: <span id='review_sold-number'>10</span></p>
-                          </div>
-                      </div>
-                      <div id='review_price'>
-                          <p id='review_price-text'>10.000đ</p>
-                          <p id='review_listPrice-text'>20.000đ</p>
-                          {/* <p id='review_listPrice-text'></p> */}
-                          <div id='review_discount'>
-                              <p id='review_discount-text'>100%</p>
-                          </div>
-                      </div>
+            <div id='bdBlock2_review'>
+            {/* <DateVN/> */}
+              <div id='review1'>
+                <p id='review_bookName'>
+                  {book.bookName}
+                </p>
+                <p id='review_nameAuthor'>
+                  Tác giả:
+                  {loadingAuthor ? (
+                    <p id='loadingDBAuthor'></p>
+                  ) : (
+                    author.map((author) => (
+                      <a
+                        key={author.authorId}
+                        href={`/tac-gia/${author.authorId}`}
+                      >
+                        <span id="nameAuthor"> {author.authorName}</span>
+                      </a>
+                    ))
+                  )}
+                </p>
+                <div id='review_number'>
+                  <div id='review_number-evalute'>
+                    <p id='averageRating'>{FormatNumber(book.evaluate ?? 0)}</p>
+                    <Rating
+                      name="half-rating-read"
+                      defaultValue={Math.round(book.evaluate ?? 0)}
+                      precision={0.25}
+                      readOnly
+                      className='evalute-start'
+                    />
+                    <p id='numberReview-text'>(46)</p>
                   </div>
-                  <div id='review2'>
-                      <InforBookDetail/>
+                  <div id='review_symbol'>
+                    <p id='review_symbol-hr'>|</p>
+                    {/* <hr id='review_symbol-hr'/> */}
                   </div>
-                  <div id='review3'>
-                      <DescriptionBD/>
-                  </div>          
+                  <div id='review_sold'>
+                    <p id='review_sold-text'>Đã bán: <span id='review_sold-number'>10</span></p>
+                  </div>
+                </div>
+                <div id='review_price'>
+                    <p id='review_price-text'>
+                      {formatCurrencyBD(book.price ?? 0)}<p className='bdFormat'>đ</p>
+                    </p>
+                    <p id='review_listPrice-text'>
+                      {formatNumberCurrency(book.listPrice ?? 0)}đ
+                    </p>
+                    {/* <p id='review_listPrice-text'></p> */}
+                    <div id='review_discount'>
+                      <p id='review_discount-text'>{discountText}</p>
+                    </div>
+                </div>
               </div>
-              {/* <div id='bdBlock2_order'>
-                  <OrderBD/>
-              </div> */}
+              <div id='review2'>
+                <InforBookDetail/>
+              </div>
+              <div id='review3'>
+                <DescriptionBD
+                  bookId={bookIdNumber}
+                  description={book.description || ''}
+                />
+              </div>          
+            </div>
           </div>
           <div id='bdBlk3'>
-              <OrderBD/>
+            <OrderBD
+              bookId={bookIdNumber}
+              currentQuantity={book.quantity ?? 0}
+              priceNumber={book.price ?? 0}
+            />
           </div>
         </div>
         <div id='bookDetail_evaluate'>
-          <EvaluateBD/>
+          <EvaluateBD bookId={bookIdNumber}/>
         </div>
       </div>
     </div>

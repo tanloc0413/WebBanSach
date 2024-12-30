@@ -88,6 +88,8 @@ input[type="number"]::-webkit-outer-spin-button {
     font-size: 1.7rem;
     text-align: start;
     font-weight: 600;
+    display: flex;
+    flex-direction: row;
 }
 
 #order_bdBtn {

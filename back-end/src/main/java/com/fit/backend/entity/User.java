@@ -14,7 +14,7 @@ public class User {
     private int userId; // mã người dùng
 
     @Column(name = "username")
-    private String userName;
+    private String username;
 
     @Column(name = "password")
     private String password;

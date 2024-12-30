@@ -15,8 +15,6 @@ function HomePage() {
         <CarouselHome/>
       </div>
       <div id='new-book'>
-        {/* <ListBook/> */}
-        {/* <Test/> */}
         <div id='blk_newBook'>
           <div id='newBook_title'>
             <div id='newBook_title1'>
@@ -25,7 +23,7 @@ function HomePage() {
               </p>
             </div>
             <div id='newBook_title2'>
-              <a href='#' id='newBook_title2-link'>
+              <a href='/sach' id='newBook_title2-link'>
                 <p className='title2_link-text'>Xem tất cả</p>
                 <i className="fa-solid fa-angle-right title2_link-icon"></i>
               </a>

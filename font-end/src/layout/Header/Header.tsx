@@ -22,6 +22,13 @@ function Header({searchKeyword, setSearchKeyword}: AppProps) {
   const navigate = useNavigate();
   const[tprKeyword, setTprKeyword] = useState('');
   // const [categoryName, setCategoryName] = useState('');
+  const settings = [
+    {
+      
+    },
+    'Account'
+    , 'Dashboard', 'Logout'
+  ];
 
   // xử lý tìm kiếm
   const onSearchInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +38,6 @@ function Header({searchKeyword, setSearchKeyword}: AppProps) {
 
   // xử lý tìm kiếm
   const handleSearch = () => {
-    // setSearchKeyword(tprKeyword)
     if (tprKeyword.trim() !== '') {
       setSearchKeyword(tprKeyword);
       navigate(`/tim-kiem/${encodeURIComponent(tprKeyword)}`);
@@ -46,6 +52,8 @@ function Header({searchKeyword, setSearchKeyword}: AppProps) {
       handleSearch();
     }
   };
+
+  
 
   return (
     <header id='header'>
@@ -79,10 +87,10 @@ function Header({searchKeyword, setSearchKeyword}: AppProps) {
             <IoCartOutline className='cart-icon user-icon'/>
             <p className='cart-text title_text-icons'>Giỏ Hàng</p>
           </a>
-          <a className='account blk_user-icon' href='tai-khoan'>
+          <div className='account blk_user-icon'>
             <FaRegUser className='account-icon user-icon'/>
             <p className='account-text title_text-icons'>Tài Khoản</p>
-          </a>
+          </div>
 
         </div>
       </div>
@@ -105,6 +113,7 @@ function Header({searchKeyword, setSearchKeyword}: AppProps) {
                   Separated link
                 </NavDropdown.Item>
               </NavDropdown>
+              <Nav.Link href="/lien-he" className='nav_link-text'>Liên hệ</Nav.Link>
             </Nav>
           </Navbar.Collapse>  
         </Container>

@@ -1,10 +1,10 @@
-import React from 'react';
 import { Routes, Route, useParams } from 'react-router-dom';
 import HomePage from '../layout/HomePage/HomePage';
 import ListBook from '../layout/ListBookPage/ListBook';
 import SearchResultList from '../layout/SearchResultPage/SearchResultList';
 import BookDetail from '../layout/BookDetail/BookDetail';
 import TestBook from '../layout/TestBook';
+import Register from '../layout/Account/Register';
 
 interface RoutePageProps {
   searchKeyword: string;
@@ -42,10 +42,15 @@ export default function RoutePage({ searchKeyword }: RoutePageProps) {
         path='/sach/:bookId'
         element={<BookDetail/>}
       />
+      <Route 
+        path='/dang-ky'
+        element={<Register/>}
+      />
       <Route
         path='/mau'
         element={<TestBook/>}
       />
+      
       {/* <Route
         path='/tim-kiem/the-loai/:categoryName'
         element={

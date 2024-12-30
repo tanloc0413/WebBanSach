@@ -28,7 +28,7 @@
 
 .block0_bookName-text {
     font-size: 1.17rem!important;
-    color: #424242!important;
+    color: #8b8b8b!important;
     text-transform: capitalize!important;
     /* font-family: "Poppins", sans-serif!important; */
 }
@@ -180,6 +180,14 @@
     color: #e2000f;
     font-size: 2.3rem;
     font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.bdFormat {
+    font-size: 2rem;
+    text-align: end;
 }
 
 #review_listPrice-text {
@@ -232,4 +240,16 @@
 #bookDetail_evaluate {
     width: 100%;
     height: auto; 
+}
+
+#loadingBD {
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loadingBD-text {
+    font-size: 2rem;
 }

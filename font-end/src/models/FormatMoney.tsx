@@ -22,3 +22,18 @@ export function formatNumberCurrency(amount:number):string {
   .format(amount)
   .replace(/\s?₫/g, '');
 }
+
+export function formatCurrencyBD(amount:number):JSX.Element {
+  const formattedAmount = new Intl.NumberFormat('vi-VN', {
+    style: 'currency',
+    currency: 'VND',
+  })
+  .format(amount)
+  .replace(/\s?₫/g, '');
+  
+  return (
+    <p>
+      {formattedAmount}
+    </p>
+  );
+}
