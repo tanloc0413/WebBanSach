@@ -5,6 +5,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import CheckIcon from '@mui/icons-material/Check';
+import { Link, useNavigate } from 'react-router-dom';
 
 import '../../css/register.css';
 
@@ -13,19 +14,22 @@ function Register() {
     const [password, setPassword] = useState('');
     const [rePassword, setRePassword] = useState('');
     const [email, setEmail] = useState('');
-    const [lastName, setLastName] = useState(''); // họ
-    const [firstName, setFirstName] = useState(''); // tên
+    const [lastName, setLastName] = useState('');
+    const [firstName, setFirstName] = useState('');
     const [sex, setSex] = useState('nam');
     const [numberPhone, setNumberPhone] = useState('');
     const [notify, setNotify] = useState('');
     const [errorNotify, setErrorNotify] = useState('');
+
+    // điều hướng trang
+    const navigate = useNavigate();
 
     const bgrImg = [
         'url(https://images2.alphacoders.com/138/thumb-1920-1383289.png)',
         'url(https://images4.alphacoders.com/641/thumb-1920-641968.jpg)',
         'url(https://images8.alphacoders.com/134/thumb-1920-1349722.png)',
         'url(https://images6.alphacoders.com/134/thumb-1920-1346734.png)',
-        'url(https://images4.alphacoders.com/973/thumb-1920-973967.jpg)'
+        'url(https://images4.alphacoders.com/973/thumb-1920-973967.jpg)',
     ];
     
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -39,34 +43,168 @@ function Register() {
         return () => clearInterval(interval);
     }, [bgrImg.length]);
 
-    // báo lỗi khi điền form
     const [errorUsername, setErrorUsername] = useState('');
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
     const [errorRePass, setErrorRePass] = useState('');
+    const [errorPhone, setErrorPhone] = useState('');
 
-    // gửi form đăng ký
-    const handleSubmit = async(e: React.FormEvent) => {
-        // clear hết toàn bộ input khi đăng ký thành công
+    const checkPassword = (password: string) => {
+        const passRegex = /^.{5,}$/;
+
+        if (!passRegex.test(password)) {
+            setErrorPassword('Mật khẩu phải ít nhất 5 ký tự!');
+            return true;
+        } else {
+            setErrorPassword('');
+            return false;
+        }
+    };
+
+    const checkRePass = (rePassword: string) => {
+        if (rePassword !== password) {
+            setErrorRePass('Mật khẩu không trùng khớp!');
+            return true;
+        } else {
+            setErrorRePass('');
+            return false;
+        }
+    };
+
+    const checkUsernameExist = async(username: string) => {
+        const url = `http://localhost:8080/nguoi-dung/search/existsByUsername?username=${username}`;
+
+        try {
+            const response = await fetch(url);
+            const data = await response.text();
+
+            if (data === 'true') {
+                setErrorUsername('Tên đăng nhập đã tồn tại!');
+                return true;
+            }
+            return false;
+        } catch (error) {
+            console.error('Lỗi khi kiểm tra tên đăng nhập: ', error);
+            return false;
+        }
+    }
+
+    const checkEmailExist = async(email: string) => {
+        const url = `http://localhost:8080/nguoi-dung/search/existsByEmail?email=${email}`;
+
+        try {
+            const response = await fetch(url);
+            const data = await response.text();
+
+            if (data === 'true') {
+                setErrorEmail('Email đã tồn tại!');
+                return true;
+            }
+            return false;
+        } catch (error) {
+            console.error('Lỗi khi kiểm tra email: ', error);
+            return false;
+        }
+    }
+
+    const checkPhone = (phone: string) => {
+        const phoneRegex = /^0\d{9}$/;
+        if (!phoneRegex.test(phone)) {
+            setErrorPhone('Số điện thoại phải bắt đầu bằng 0 và có 10 chữ số!');
+            return true;
+        } else {
+            setErrorPhone('');
+            return false;
+        }
+    };
+
+    const handleUsernameChange = async(e: React.ChangeEvent<HTMLInputElement>) => {
+        setUsername(e.target.value);
+        setErrorUsername('');
+        return checkUsernameExist(e.target.value);
+    }
+
+    const handleEmailChange = async(e: React.ChangeEvent<HTMLInputElement>) => {
+        setEmail(e.target.value);
+        setErrorEmail('');
+        return checkEmailExist(e.target.value);
+    }
+
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPassword(e.target.value);
+        setErrorPassword('');
+        return checkPassword(e.target.value);
+    }
+
+    const handleRePassChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setRePassword(e.target.value);
+        setErrorRePass('');
+        return checkRePass(e.target.value);
+    }
+
+    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        let phoneInput = e.target.value;
+    
+        // Nếu dấu '.' xuất hiện ở đầu input, loại bỏ nó ngay lập tức
+        if (phoneInput[0] === '.') {
+            phoneInput = phoneInput.slice(1);
+        }
+        // Kiểm tra nếu input chứa dấu '.' và tự động xóa nó
+        else if (phoneInput.includes('.')) {
+            phoneInput = phoneInput.replace('.', '');
+        }
+        // Kiểm tra nếu input chứa ký tự không phải là số, bao gồm dấu chấm hoặc ký tự khác
+        else if (/[^0-9]/.test(phoneInput)) {
+            return;  // Nếu có ký tự không phải là số thì không cho nhập
+        }
+        // Nếu input trống thì ẩn lỗi
+        else if (phoneInput === "") {
+            setErrorPhone("");
+            setNumberPhone(phoneInput);
+            return;
+        }
+        // Nếu số điện thoại không bắt đầu bằng 0
+        else if (phoneInput[0] !== "0") {
+            setErrorPhone('Số điện thoại phải bắt đầu bằng 0!');
+            setNumberPhone(phoneInput);
+        } 
+        // Nếu nhập đủ 10 số và bắt đầu bằng 0 thì không báo lỗi và không cho nhập thêm
+        else if (phoneInput.length === 10) {
+            setNumberPhone(phoneInput);
+            setErrorPhone('')
+        }
+        // Nếu nhập số bắt đầu bằng 0 nhưng chưa đủ 10 số
+        else if (phoneInput.length < 10) {
+            setNumberPhone(phoneInput);
+            setErrorPhone('Số điện thoại phải đủ 10 số!');
+        }
+    };
+    
+
+    const handleSubmit = async (e: React.FormEvent) => {
         setErrorUsername('');
         setErrorEmail('');
         setErrorPassword('');
         setErrorRePass('');
-
-        // tránh click liên tục
+        setErrorPhone('');
+        
         e.preventDefault();
 
-        // kiểm tra các điều kiện và gán kết quả vào biến
-        const isUsernameValid = !await checkUsernameExist(username);
-        const isEmailValid = !await checkEmailExist(email);
-        const isPasswordValid = !checkPassword(password);
-        const isRePassValid = !checkRePass(rePassword);
+        // Kiểm tra xem có trường nào trống không
+        if (!username || !email || !lastName || !firstName || !numberPhone || !password || !rePassword) {
+            setErrorNotify('Vui lòng điền đầy đủ thông tin!');
+            return;
+        }
 
-        // kiểm tra tất cả điều kiện
-        if(isUsernameValid && isEmailValid && isPasswordValid && isRePassValid) {
+        const isUsernameValid = await checkUsernameExist(username);
+        const isEmailValid = await checkEmailExist(email);
+        const isPasswordValid = await checkPassword(password);
+        const isRePassValid = await checkRePass(rePassword);
+        const isPhoneValid = await checkPhone(numberPhone);
+
+        if (!isUsernameValid && !isEmailValid && !isPasswordValid && !isRePassValid && !isPhoneValid) {
             try {
-                const url = 'http://localhost:8080/tai-khoan/dang-ky'
-
+                const url = 'http://localhost:8080/tai-khoan/dang-ky';
                 const response = await fetch(url, {
                     method: 'POST',
                     headers: {
@@ -79,133 +217,48 @@ function Register() {
                         firstName: firstName,
                         sex: sex,
                         numberPhone: numberPhone,
-                        password: password
+                        password: password,
+                        activateAcc: false, // check tài khoản đã kích hoạt
+                        activationCode: "" // mã kích hoạt
                     })
                 });
 
-                const responseData = await response.json();
-
-                if(response.ok) {
+                if (response.ok) {
                     setNotify('Đăng ký tài khoản thành công!');
+                    setErrorNotify('');
+                    // Clear form
+                    setUsername('');
+                    setPassword('');
+                    setRePassword('');
+                    setEmail('');
+                    setLastName('');
+                    setFirstName('');
+                    setSex('nam');
+                    setNumberPhone('');
+                    
                 } else {
-                    console.log(responseData);
+                    setNotify('');
                     setErrorNotify('Đã xảy ra lỗi trong quá trình đăng ký!');
                 }
-            } catch(error) {
-                console.log(error);
-                setErrorNotify('Đăng ký không thành công!');
+            } catch (error) {
+                setNotify('');
+                setErrorNotify('Đăng ký không thành công! Vui lòng kiểm tra email để kích hoạt tài khoản!');
             }
         }
-    }
+    };
+    
+    // set thời gian 1s cho thông báo
+    // useEffect(() => {
+    //     let timer: NodeJS.Timeout;
+    //     if (notify || errorNotify) {
+    //         timer = setTimeout(() => {
+    //             setNotify('');
+    //             setErrorNotify('');
+    //         }, 1000);
+    //     }
 
-    // kiểm tra tên đăng nhập đã tồn tại
-    const checkUsernameExist = async(username: string) => {
-        // end-point
-        const url = `http://localhost:8080/nguoi-dung/search/existsByUsername?username=${username}`;
-
-        // call API
-        try {
-            const response = await fetch(url);
-            const data = await response.text();
-
-            if(data === 'true') {
-                setErrorUsername('Tên đăng nhập đã tồn tại!');
-                return true;
-            }
-            return false;
-        } catch(error) {
-            console.error('Lỗi khi kiểm tra tên đăng nhập: ', error);
-            return false;
-        }
-    }
-
-    const handleUsernameChange = async(e: React.ChangeEvent<HTMLInputElement>) => {
-        // thay đổi giá trị
-        setUsername(e.target.value);
-
-        // kiểm tra
-        setErrorUsername('');
-
-        return checkUsernameExist(e.target.value);
-    }
-
-    // kiểm tra tên đăng nhập đã tồn tại
-    const checkEmailExist = async(email: string) => {
-        // end-point
-        const url = `http://localhost:8080/nguoi-dung/search/existsByEmail?email=${email}`;
-
-        // call API
-        try {
-            const response = await fetch(url);
-            const data = await response.text();
-
-            if(data === 'true') {
-                setErrorEmail('Email đã tồn tại!');
-                return true;
-            }
-            return false;
-        } catch(error) {
-            console.error('Lỗi khi kiểm tra email: ', error);
-            return false;
-        }
-    }
-
-    const handleEmailChange = async(e: React.ChangeEvent<HTMLInputElement>) => {
-        // thay đổi giá trị
-        setEmail(e.target.value);
-
-        // kiểm tra
-        setErrorEmail('');
-
-        return checkEmailExist(e.target.value);
-    }
-
-    // kiểm tra mật khẩu
-    const checkPassword = async(password: string) => {
-        const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,}$/;
-        // const passRegex = /^(?=.*[a-z]){5,}$/;
-
-        if(!passRegex.test(password)) {
-            setErrorPassword('Mật khẩu phải ít nhất 5 ký tự, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt!');
-            return true;
-        }
-        else {
-            setErrorPassword('');
-            return false;
-        }
-    }
-
-    const handlePasswordChange = async(e: React.ChangeEvent<HTMLInputElement>) => {
-        // thay đổi giá trị
-        setPassword(e.target.value);
-
-        // kiểm tra
-        setErrorPassword('');
-
-        return checkPassword(e.target.value);
-    }
-
-    // kiểm tra nhập lại mật khẩu
-    const checkRePass = async(password: string) => {
-        if(rePassword !== password) {
-            setErrorRePass('Mật khẩu không trùng khớp!');
-            return true;
-        }
-        else {
-            setErrorRePass('');
-            return false;
-        }
-    }
-
-    const handleRePassChange = async(e: React.ChangeEvent<HTMLInputElement>) => {
-        // thay đổi giá trị
-        setRePassword(e.target.value);
-
-        // kiểm tra
-        setErrorRePass('');
-
-        return checkRePass(e.target.value);
-    }
+    //     return () => clearTimeout(timer);
+    // }, [notify, errorNotify]);
 
     return (
         <div
@@ -306,13 +359,15 @@ function Register() {
                                 onChange={(e) => setSex(e.target.value)}
                             >
                                 <FormControlLabel
-                                    value="nam"
+                                    // value={`nam`}
+                                    value='nam'
                                     control={<Radio />}
                                     label="Nam"
                                     color='black'
                                 />
                                 <FormControlLabel
                                     value="nữ"
+                                    // value={`nữ`}
                                     control={<Radio />}
                                     label="Nữ"
                                     color='black'
@@ -331,8 +386,13 @@ function Register() {
                                 type='number'
                                 id='input_register'
                                 value={numberPhone}
-                                onChange={(e) => setNumberPhone(e.target.value)}
+                                // onChange={(e) => setNumberPhone(e.target.value)}
+                                onChange={handlePhoneChange}
+                                // onFocus={() => setErrorPhone('')}
                             />
+                            <p id='error_register'>
+                                {errorPhone}
+                            </p>
                         </div>
                         <div id='register_input-blk'>
                             <label
@@ -368,34 +428,37 @@ function Register() {
                                 {errorRePass}
                             </p>
                         </div>
+                        {(notify || errorNotify) &&
+                            (
+                                <div id='block_notify'>
+                                    <Alert
+                                        severity={notify ? "success" : "error"} 
+                                        className={`block_notify-${notify ? "success" : "error"} block_notification`}
+                                    >
+                                        {notify || errorNotify}
+                                    </Alert>
+                                </div>
+                            )
+                        }
                         <div id='register_btn'>
                             <Button
                                 variant="outlined"
                                 size='large'
                                 type='submit'
-                                // onClick={handleSubmit}
+                                // style={{minWidth: '70px'}}                             
                             >
                                 Đăng ký
                             </Button>
-                            {/* <div>{notify || errorNotify}</div> */}
+                            {/* <button type='submit'   >đăng ký</button> */}
                         </div>
+                        
                     </form>
-                    {notify &&
-                        (
-                            <Alert severity="success">
-                                {notify}
-                            </Alert>
-                        )
-                    }
-                    {errorNotify &&
-                        (
-                            <Alert variant="outlined" severity="error">
-                                {errorNotify}
-                            </Alert>
-                        )
-                    }
+                    <div id='back_signin'>
+                        <p id='back_signin-text'>Đã có tài khoản? <span><Link to={'/dang-nhap'} className='back_signin-textLink'>Đăng nhập ngay!</Link></span></p>
+                    </div>
                 </div>
 
+                
             </div>
         </div>
     )

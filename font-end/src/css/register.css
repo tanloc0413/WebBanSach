@@ -84,3 +84,48 @@
     align-items: start;
     justify-content: center;
 }
+
+#block_notify {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.block_notification {
+    width: 100%;
+    font-size: 16px!important;
+    text-align: center!important;
+    padding-top: 5px!important;
+}
+
+#back_signin {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+#back_signin-text {
+    font-size: 1.05rem;
+    
+}
+
+.css-gb418l-MuiButtonBase-root-MuiButton-root {
+    width: 13rem!important;
+    font-size: 1.15rem!important;
+    padding-top: 10px!important;
+}
+
+.back_signin-textLink {
+    color: #2b7ae1!important;
+    font-weight: 400!important;
+}
+
+.back_signin-textLink:active, .back_signin-textLink:hover {
+    color: #003d8e!important;
+}

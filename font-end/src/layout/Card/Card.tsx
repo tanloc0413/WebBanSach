@@ -9,13 +9,6 @@ import '../../css/cardBook.css';
 import BookModel from '../../models/BookModel';
 import BookImageModel from '../../models/BookImageModel';
 import { getAllImageOfTheBooks, getFirstImgBook } from '../../api/ImageBookAPI';
-import AvtImage from '../../imgs/avatar books.jpg';
-
-// import React, { useState } from 'react';
-// import { formatCurrency, formatNumberCurrency } from '../../models/FormatMoney';
-// import { MdFavoriteBorder } from 'react-icons/md';
-// import { IoHeartDislikeOutline } from 'react-icons/io5';
-// import { BsCartPlus } from 'react-icons/bs';
 
 import '../../css/cardBook.css';
 import { slugify } from '../../models/Converts';

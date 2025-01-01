@@ -1,0 +1,28 @@
+#actiavted-account, #actiavted_block {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#actiavted-account {
+    margin: 3% 0;
+}
+
+#actiavted-title {
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#actiavted_text-error {
+    color: red;
+    font-size: 2.5rem;
+}
+
+#actiavted_text-notify {
+    /* color: #0018cf; */
+    font-size: 1.5rem;
+}

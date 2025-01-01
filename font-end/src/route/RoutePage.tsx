@@ -4,7 +4,9 @@ import ListBook from '../layout/ListBookPage/ListBook';
 import SearchResultList from '../layout/SearchResultPage/SearchResultList';
 import BookDetail from '../layout/BookDetail/BookDetail';
 import TestBook from '../layout/TestBook';
-import Register from '../layout/Account/Register';
+import Register from '../layout/User/Register';
+import Login from '../layout/User/Login';
+import ActivateAccount from '../layout/User/ActivateAccount';
 
 interface RoutePageProps {
   searchKeyword: string;
@@ -46,6 +48,20 @@ export default function RoutePage({ searchKeyword }: RoutePageProps) {
         path='/dang-ky'
         element={<Register/>}
       />
+      <Route 
+        path='/dang-nhap'
+        element={<Login/>}
+      />
+      <Route
+        path='/kich-hoat/:email/:activationCode'
+        element={<ActivateAccount/>}
+      />
+
+
+
+
+
+
       <Route
         path='/mau'
         element={<TestBook/>}
