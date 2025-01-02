@@ -15,7 +15,8 @@ public class Evaluate {
     @Column(name = "rating_points")
     private float ratingPoints; // điểm xếp hạng
 
-    @Column(name = "comment")
+    @Lob
+    @Column(name = "comment", columnDefinition = "TEXT")
     private String comment; // nhận xét
 
     @ManyToOne(cascade = {
@@ -31,7 +32,7 @@ public class Evaluate {
             CascadeType.DETACH, CascadeType.REFRESH,
     })
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private Users users;
 
 
 }

@@ -18,7 +18,7 @@ public class Image {
     @Column(name = "check_icon")
     private boolean checkIcon; // kiểm tra có phải là icon
 
-    @Column(name = "img_path")
+    @Column(name = "img_path", columnDefinition = "TEXT")
     private String pathImage; // đường dẫn
 
     @Lob

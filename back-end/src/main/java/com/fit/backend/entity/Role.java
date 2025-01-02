@@ -26,5 +26,5 @@ public class Role {
             joinColumns = @JoinColumn(name="role_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    private List<User> listUser; // danh sách người dùng
+    private List<Users> listUser; // danh sách người dùng
 }

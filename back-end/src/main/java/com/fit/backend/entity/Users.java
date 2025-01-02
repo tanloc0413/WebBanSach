@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "users")
-public class User {
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
@@ -41,26 +41,32 @@ public class User {
     @Column(name = "purchase_address")
     private String purchaseAddress; // địa chỉ mua hàng
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {
+    @Column(name = "activate_acc")
+    private boolean activateAcc;
+
+    @Column(name = "activation_code")
+    private String activationCode;
+
+    @OneToMany(mappedBy = "users", fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH,
     })
     private List<Evaluate> listEvaluate; // danh sách đánh giá
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {
+    @OneToMany(mappedBy = "users", fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH,
     })
     private List<FavoriteBook> listFavoriteBook; // danh sách yêu thích
 
 //    private List<Cart> listCart; // danh sách giỏ hàng
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {
+    @OneToMany(mappedBy = "users", fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH,
     })
     private List<Order> listOrder; // danh sách đơn hàng
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {
             CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH
     })
@@ -71,4 +77,20 @@ public class User {
     )
     private List<Role> listRole; // danh sách quyền
 
+
+    public boolean isActivateAcc() {
+        return activateAcc;
+    }
+
+    public void setActivateAcc(boolean activateAcc) {
+        this.activateAcc = activateAcc;
+    }
+
+    public String getActivationCode() {
+        return activationCode;
+    }
+
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
+    }
 }

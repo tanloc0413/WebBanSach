@@ -1,6 +1,6 @@
 package com.fit.backend.config;
 
-import com.fit.backend.entity.User;
+import com.fit.backend.entity.Users;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.metamodel.Type;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,12 +32,12 @@ public class MethodRestConfig implements RepositoryRestConfigurer {
         // config.exposeIdsFor(Category.class);
 
         // cor configuration
-        cors.addMapping("/**")
-                .allowedOrigins(url)
-                .allowedMethods("GET", "POST", "PUT", "DELETE")
-//                .allowedHeaders("*")
-//                .allowCredentials(true)
-        ;
+//        cors.addMapping("/**")
+//                .allowedOrigins(url)
+//                .allowedMethods("GET", "POST", "PUT", "DELETE")
+////                .allowedHeaders("*")
+////                .allowCredentials(true)
+//        ;
 //        disableHttpMethods(User.class, config, blockMethods );
     }
 
