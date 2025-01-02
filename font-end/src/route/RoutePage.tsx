@@ -1,4 +1,4 @@
-import { Routes, Route, useParams } from 'react-router-dom';
+import { Routes, Route, useParams, useNavigate, Navigate } from 'react-router-dom';
 import HomePage from '../layout/HomePage/HomePage';
 import ListBook from '../layout/ListBookPage/ListBook';
 import SearchResultList from '../layout/SearchResultPage/SearchResultList';
@@ -7,6 +7,9 @@ import TestBook from '../layout/TestBook';
 import Register from '../layout/User/Register';
 import Login from '../layout/User/Login';
 import ActivateAccount from '../layout/User/ActivateAccount';
+import BookFormForAdmin from '../layout/Admin/BookForm';
+import TestLogin from '../layout/User/TestLogin';
+import { useEffect } from 'react';
 
 interface RoutePageProps {
   searchKeyword: string;
@@ -14,6 +17,7 @@ interface RoutePageProps {
 
 export default function RoutePage({ searchKeyword }: RoutePageProps) {
   const { searchKeywordUrl, categoryName } = useParams();
+
   // let categoryIdNumber = 0;
 
   // try {
@@ -28,9 +32,16 @@ export default function RoutePage({ searchKeyword }: RoutePageProps) {
   //   categoryIdNumber = 0;
   // }
 
+
+  // useEffect(() => {
+  //   if (!searchKeyword) {
+  //     navigate('/');
+  //   }
+  // }, [searchKeyword, navigate]);
+
   return (
     <Routes>
-      <Route index element={<HomePage/>}/>
+      <Route path='/' element={<HomePage/>}/>
       <Route path='/sach' element={<ListBook/>}/>
       <Route
         path='/tim-kiem/:searchKeyword'
@@ -56,8 +67,14 @@ export default function RoutePage({ searchKeyword }: RoutePageProps) {
         path='/kich-hoat/:email/:activationCode'
         element={<ActivateAccount/>}
       />
-
-
+      <Route
+        path='/admin/them-sach'
+        element={<BookFormForAdmin/>}
+      />
+      <Route
+        path='/test'
+        element={<TestLogin/>}
+      />
 
 
 

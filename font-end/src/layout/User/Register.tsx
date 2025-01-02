@@ -218,7 +218,7 @@ function Register() {
                         sex: sex,
                         numberPhone: numberPhone,
                         password: password,
-                        activateAcc: false, // check tài khoản đã kích hoạt
+                        activateAcc: 0,
                         activationCode: "" // mã kích hoạt
                     })
                 });
@@ -248,17 +248,17 @@ function Register() {
     };
     
     // set thời gian 1s cho thông báo
-    // useEffect(() => {
-    //     let timer: NodeJS.Timeout;
-    //     if (notify || errorNotify) {
-    //         timer = setTimeout(() => {
-    //             setNotify('');
-    //             setErrorNotify('');
-    //         }, 1000);
-    //     }
-
-    //     return () => clearTimeout(timer);
-    // }, [notify, errorNotify]);
+    useEffect(() => {
+        let timer: NodeJS.Timeout;
+        if (notify || errorNotify) {
+            timer = setTimeout(() => {
+                setNotify('');
+                setErrorNotify('');
+            }, 15000);
+        }
+    
+        return () => clearTimeout(timer);
+    }, [notify, errorNotify]);
 
     return (
         <div

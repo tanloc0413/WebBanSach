@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { IoMdSearch } from "react-icons/io";
 import { IoCartOutline } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
@@ -21,6 +21,9 @@ interface AppProps {
 function Header({searchKeyword, setSearchKeyword}: AppProps) {
   const navigate = useNavigate();
   const[tprKeyword, setTprKeyword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+
   // const [categoryName, setCategoryName] = useState('');
   const settings = [
     {
@@ -53,6 +56,18 @@ function Header({searchKeyword, setSearchKeyword}: AppProps) {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+  };
+
+  useEffect(() => {
+    // Kiểm tra xem token đã lưu trong localStorage chưa
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
   
 
   return (
@@ -87,11 +102,23 @@ function Header({searchKeyword, setSearchKeyword}: AppProps) {
             <IoCartOutline className='cart-icon user-icon'/>
             <p className='cart-text title_text-icons'>Giỏ Hàng</p>
           </a>
-          <div className='account blk_user-icon'>
+          {/* <div className='account blk_user-icon'>
             <FaRegUser className='account-icon user-icon'/>
             <p className='account-text title_text-icons'>Tài Khoản</p>
-          </div>
-
+          </div> */}
+          {!isLoggedIn ? (
+            <Link to='/dang-nhap' className='login-button'>
+              Đăng Nhập
+            </Link>
+          ) : (
+            <div className='account blk_user-icon'>
+              <FaRegUser className='account-icon user-icon' />
+              <p className='account-text title_text-icons'>Tài Khoản</p>
+              <button onClick={handleLogout} className='logout-button'>
+                Đăng Xuất
+              </button>
+            </div>
+          )}
         </div>
       </div>
       <Navbar id='blk_header2'>

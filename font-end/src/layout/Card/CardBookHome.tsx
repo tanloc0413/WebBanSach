@@ -73,7 +73,8 @@ const CardBookHome: React.FC<BookProps> = (props) => {
   }
   
   // lấy ảnh đại diện
-  let dataImage:string = listImgBook[0]?.dataImage || AvtImage;
+  // let dataImage:string = listImgBook[0]?.dataImage || AvtImage;
+  let dataImage: string = listImgBook.length > 0 && listImgBook[0]?.dataImage ? listImgBook[0].dataImage : AvtImage;
 
   // Convert tên sách thành slug
   const bookSlug = slugify(props.books.bookName || '');
