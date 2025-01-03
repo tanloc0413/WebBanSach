@@ -1,0 +1,7 @@
+------------- FONT POPPINS -------------
+
+font-family: "Poppins", sans-serif;
+
+------------- FONT ROBOTO -------------
+
+font-family: "Roboto", serif;

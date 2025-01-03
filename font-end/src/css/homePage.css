@@ -1,0 +1,102 @@
+#homePage {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+    padding-bottom: 2%;
+}
+
+#carouse-home {
+    width: 100%;
+    height: auto;
+    padding: 0 8%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+#new-book {
+    width: 100%;
+    height: auto;
+    padding: 1.8rem 10%;
+    margin-top: 1.5rem;
+    background-image: url("../imgs/flash_sale_background_image.jpg");
+    /* background-size: cover; */
+}
+
+/* Block sách mới nhất */
+#blk_newBook {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+#newBook_title {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 2% 12px 2.5%;
+}
+
+#newBook_title1 {
+    height: 100%;
+}
+
+#newBook_title2 {
+    padding-top: 5px;
+}
+
+#newBook_title1-text {
+    font-size: 36px;
+    font-weight: 900;
+    /* color: #ff3900; */
+    color: #ff0000;
+    font-style: italic;
+    text-transform: uppercase;
+    text-shadow: 1.5px 1.5px 3px #ffcc00;
+    font-family: "Roboto", serif;
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;
+    padding-top: 7px;
+}
+
+#newBook_title2-link {
+    color: #1060ff!important;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.title2_link-text {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.title2_link-icon {
+    font-size: 30px;
+}
+
+#newBook_block {
+    width: 100%;
+    height: auto;
+    margin-top: 1%;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+/*-------------------------- Danh sách các quyển sách --------------------------*/
+
+#list-books {
+    width: 100%;
+    height: auto;
+    padding: 0 5%;
+    /* background-color: #fff; */
+    margin-top: 2rem;
+    box-sizing: border-box;
+}

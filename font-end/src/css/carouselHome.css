@@ -1,0 +1,73 @@
+button {
+    padding-block: 0;
+    padding-inline: 0;
+    border-width: 0;
+}
+
+#banner {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#carousel_banner {
+    width: 60%;
+
+}
+
+.carousel-item img {
+    height: 20rem;
+    color: white!important; 
+}
+
+.carousel-control-next, .carousel-control-prev {
+    width: 2.5rem!important;
+    height: 2.5rem!important;
+    border: 1.5px solid #fff!important;
+    display: flex!important;
+    color: #fff!important;
+    opacity: 1!important;
+    border-radius: 5px;
+    top: 45%!important;
+}
+
+.carousel-control-next:hover, .carousel-control-prev:hover, .carousel-control-next:active, .carousel-control-prev:active {
+    opacity: .8!important;
+}
+
+.carousel-control-next {
+    margin-right: 1rem;
+}
+
+.carousel-control-prev {
+    margin-left: 1rem;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    width: 1.5rem!important;
+    height: 1.5rem!important;
+}
+
+.carousel-indicators {
+    display: flex!important;
+    justify-self: center!important;
+    align-items: center!important;
+    margin-bottom: 0.5rem!important;
+    column-gap: 10px;
+}
+
+.carousel-indicators button {
+    width: 10px!important;
+    height: 10px!important;
+    border-radius: 50%;
+    background-color: #fff!important;
+}
+
+.carousel-indicators .active {
+    /* width: 7px!important;
+    height: 7px!important; */
+    background-color: #6f6f6f!important;
+}
+
+

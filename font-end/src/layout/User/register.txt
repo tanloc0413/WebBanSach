@@ -1,0 +1,259 @@
+const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [rePassword, setRePassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [lastName, setLastName] = useState(''); // họ
+    const [firstName, setFirstName] = useState(''); // tên
+    const [sex, setSex] = useState('nam');
+    const [numberPhone, setNumberPhone] = useState('');
+    const [notify, setNotify] = useState('');
+    const [errorNotify, setErrorNotify] = useState('');
+
+    // báo lỗi khi điền form
+    const [errorUsername, setErrorUsername] = useState('');
+    const [errorEmail, setErrorEmail] = useState('');
+    const [errorPassword, setErrorPassword] = useState('');
+    const [errorRePass, setErrorRePass] = useState('');
+    const [errorPhone, setErrorPhone] = useState('');
+
+    const bgrImg = [
+        'url(https://images2.alphacoders.com/138/thumb-1920-1383289.png)',
+        'url(https://images4.alphacoders.com/641/thumb-1920-641968.jpg)',
+        'url(https://images8.alphacoders.com/134/thumb-1920-1349722.png)',
+        'url(https://images6.alphacoders.com/134/thumb-1920-1346734.png)',
+        'url(https://images4.alphacoders.com/973/thumb-1920-973967.jpg)'
+    ];
+    
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImageIndex((prevIndex) =>
+                (prevIndex + 1) % bgrImg.length
+            );
+        }, 10000);
+        return () => clearInterval(interval);
+    }, [bgrImg.length]);
+
+
+
+    // kiểm tra tên đăng nhập đã tồn tại
+    const checkUsernameExist = async(username: string) => {
+        // end-point
+        const url = `http://localhost:8080/nguoi-dung/search/existsByUsername?username=${username}`;
+
+        // call API
+        try {
+            const response = await fetch(url);
+            const data = await response.text();
+
+            if(data === 'true') {
+                setErrorUsername('Tên đăng nhập đã tồn tại!');
+                return true;
+            }
+            return false;
+        } catch(error) {
+            console.error('Lỗi khi kiểm tra tên đăng nhập: ', error);
+            return false;
+        }
+    }
+
+    // kiểm tra số điện thoại
+    const checkPhone = (phone: string) => {
+        const phoneRegex = /^0\d{9}$/;
+        if (!phoneRegex.test(phone)) {
+            setErrorPhone('Số điện thoại phải bắt đầu bằng 0 và có 10 chữ số!');
+            return true;
+        } else {
+            setErrorPhone('');
+            return false;
+        }
+    };
+
+    // kiểm tra tên đăng nhập đã tồn tại
+    const checkEmailExist = async(email: string) => {
+        // end-point
+        const url = `http://localhost:8080/nguoi-dung/search/existsByEmail?email=${email}`;
+
+        // call API
+        try {
+            const response = await fetch(url);
+            const data = await response.text();
+
+            if(data === 'true') {
+                setErrorEmail('Email đã tồn tại!');
+                return true;
+            }
+            return false;
+        } catch(error) {
+            console.error('Lỗi khi kiểm tra email: ', error);
+            return false;
+        }
+    }
+
+        // kiểm tra mật khẩu
+
+    const checkPassword = (password: string) => {
+        const passRegex = /^.{5,}$/;  // Đảm bảo mật khẩu ít nhất 5 ký tự
+
+        if (!passRegex.test(password)) {
+            setErrorPassword('Mật khẩu phải ít nhất 5 ký tự!');
+            return true;
+        } else {
+            setErrorPassword('');
+            return false;
+        }
+    };
+
+
+    const handleUsernameChange = async(e: React.ChangeEvent<HTMLInputElement>) => {
+        // thay đổi giá trị
+        setUsername(e.target.value);
+
+        // kiểm tra
+        setErrorUsername('');
+
+        return checkUsernameExist(e.target.value);
+    }
+
+    
+
+    const handleEmailChange = async(e: React.ChangeEvent<HTMLInputElement>) => {
+        // thay đổi giá trị
+        setEmail(e.target.value);
+
+        // kiểm tra
+        setErrorEmail('');
+
+        return checkEmailExist(e.target.value);
+    }
+
+    // const checkPassword = async(password: string) => {
+    //     // const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,}$/;
+    //     const passRegex = /^.{5,}$/;
+
+    //     if(!passRegex.test(password)) {
+    //         setErrorPassword('Mật khẩu phải ít nhất 5 ký tự!');
+    //         return true;
+    //     } else {
+    //         setErrorPassword('');
+    //         return false;
+    //     }
+    // }
+    
+
+    const handlePasswordChange = async(e: React.ChangeEvent<HTMLInputElement>) => {
+        // thay đổi giá trị
+        setPassword(e.target.value);
+
+        // kiểm tra
+        setErrorPassword('');
+
+        return checkPassword(e.target.value);
+    }
+
+    // kiểm tra nhập lại mật khẩu
+    // const checkRePass = async(password: string) => {
+    //     if(rePassword !== password) {
+    //         setErrorRePass('Mật khẩu không trùng khớp!');
+    //         return true;
+    //     }
+    //     else {
+    //         setErrorRePass('');
+    //         return false;
+    //     }
+    // }
+    const checkRePass = (rePassword: string) => {
+        if (rePassword !== password) {
+            setErrorRePass('Mật khẩu không trùng khớp!');
+            return true;
+        } else {
+            setErrorRePass('');
+            return false;
+        }
+    };
+
+    // kiểm tra số điện thoại
+    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setNumberPhone(e.target.value);
+        setErrorPhone('');
+        return checkPhone(e.target.value);
+    }
+    
+   
+
+    const handleRePassChange = async(e: React.ChangeEvent<HTMLInputElement>) => {
+        // thay đổi giá trị
+        setRePassword(e.target.value);
+
+        // kiểm tra
+        setErrorRePass('');
+
+        return checkRePass(e.target.value);
+    }
+
+    // gửi form đăng ký
+    const handleSubmit = async (e: React.FormEvent) => {
+        // Clear error messages before validating
+        setErrorUsername('');
+        setErrorEmail('');
+        setErrorPassword('');
+        setErrorRePass('');
+        setErrorPhone('');
+
+        e.preventDefault();
+        
+        // Kiểm tra các điều kiện
+        const isUsernameValid = await checkUsernameExist(username);
+        const isEmailValid = await checkEmailExist(email);
+        const isPasswordValid = await checkPassword(password);
+        const isRePassValid = await checkRePass(rePassword);
+        const isPhoneValid = numberPhone.length === 10;
+
+        // Kiểm tra tất cả điều kiện
+        if (!isUsernameValid && !isEmailValid && !isPasswordValid && !isRePassValid && !isPhoneValid) {
+            try {
+                const url = 'http://localhost:8080/tai-khoan/dang-ky';
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        email: email,
+                        lastName: lastName,
+                        firstName: firstName,
+                        sex: sex,
+                        numberPhone: numberPhone,
+                        password: password
+                    })
+                });
+    
+                if (response.ok) {
+                    setNotify('Đăng ký tài khoản thành công!');
+                    setErrorNotify('');
+                    // clear form
+                    setUsername('');
+                    setPassword('');
+                    setRePassword('');
+                    setEmail('');
+                    setLastName('');
+                    setFirstName('');
+                    setSex('nam');
+                    setNumberPhone('');
+                    setErrorUsername('');
+                    setErrorEmail('');
+                    setErrorPassword('');
+                    setErrorRePass('');
+                    setErrorPhone('');
+                } else {
+                    setNotify('');
+                    setErrorNotify('Đã xảy ra lỗi trong quá trình đăng ký!');
+                }
+            } catch (error) {
+                setNotify('');
+                setErrorNotify('Đăng ký không thành công!');
+            }
+        }
+    };

@@ -1,0 +1,224 @@
+#header {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    display: flex;
+    /* padding: 10px 0 0 0; */
+    flex-direction: column;
+}
+
+#blk_header1 {
+    width: 100%;
+    height: 100%;
+    padding: 0 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 2%;
+    padding: 13px 10% 13px 10%;
+}
+
+#blk_logo, #blk_search, #blk_user, .blk_user-icon {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo */
+#blk_logo {
+    width: 10%;
+    height: 4rem;
+    justify-content: center;
+}
+
+#header_logo-img {
+    width: 70%;
+    height: auto;
+}
+
+/* Input Tìm Kiếm */
+#blk_search {
+    width: 45%;
+    height: 45px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1.5px #515151 solid;
+    margin-left: 5rem;
+}
+
+#input-search {
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    outline: none;
+    padding-left: 15px;
+    padding-bottom: 2px;
+    border-radius: 8px;
+    border: none;
+    text-align: start;
+}
+
+#blk_search-icon {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px 2px 3px 0;
+}
+
+#search {
+    width: 4rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff1111;
+    border-radius: 5px;
+    /* margin-right: 2.5px; */
+    border: none;
+}
+
+#search:active, #search:hover {
+    background-color: #db1111;
+}
+
+.search-icon {
+    font-size: 30px;
+    color: #fff; 
+}
+
+/* Tài Khoản */
+#blk_user {
+    width: 25%;
+    justify-content: end;
+    flex-direction: row;
+    column-gap: 2rem;
+    margin-top: 5px;
+}
+
+.blk_user-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.blk_user-icon:active, .blk_user-icon:hover {
+    cursor: pointer;
+}
+
+.user-icon {
+    font-size: 1.7rem;
+}
+
+.title_text-icons {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#blk_header2 {
+    width: 100%;
+    border-top: 1px solid #9e9e9e;
+    background-color: #318aff;
+    border-bottom: 1.5px solid #9e9e9e;
+}
+
+@media (min-width: 1200px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 950!important;
+    }
+}
+
+@media (min-width: 1300px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1150px!important;
+    }
+}
+
+@media (min-width: 1500px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1250px!important;
+    }
+}
+
+@media (min-width: 1600px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1350px!important;
+    }
+}
+
+@media (min-width: 1900px) {
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 1550px!important;
+    }
+}
+
+@media (min-width: 2000px) {
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 1650px!important;
+    }
+}
+
+@media (min-width: 2100px) {
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 1850px!important;
+    }
+}
+
+.navbar-nav {
+    column-gap: 1.2rem;
+}
+
+.nav-link {
+    font-size: 19px!important;
+    color: #fff!important;
+}
+
+.nav_link-text {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    margin-top: 1.5px;
+    text-transform: capitalize;
+    font-size: 18px;
+}
+
+#block_header-account {
+    width: 10rem;
+    background-color: #fff;
+    position: absolute;
+    z-index: 1;
+    border-radius: 5px;
+    padding: 10px 5px;
+    top: 75px;
+    right: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1.5px solid #7f7f7f;
+}
+
+.logout-button {
+    width: 100%;
+    font-size: 1.1rem;
+    background-color: #fff;
+}
+
+.button_login, .button_signup {
+    width: auto;
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #318aff;
+    border-radius: 5px;
+    color: #318aff!important;
+}
+
+#block_header-account {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5px;
+}

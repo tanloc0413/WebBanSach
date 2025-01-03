@@ -1,0 +1,131 @@
+#block_register {
+    width: 100%;
+    height: 100%;
+}
+
+#register {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3% 0;
+    /* background-size: cover; */
+    background-position: center;
+}
+
+#register_block {
+    width: 28rem;
+    height: auto;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    padding: 15px 20px;
+    flex-direction: column;
+}
+
+#register-title {
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    font-family: "Roboto", serif;
+}
+
+#register_blk, #register_input {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#register_blk {
+    justify-content: start;
+}
+
+#register_input-blk {
+    width: 100%;
+    height: auto;
+    /* row-gap: 10px; */
+    justify-content: start;
+    margin-top: 10px;
+    color: #545454;
+}
+
+.label_register {
+    font-size: 1.15rem;
+    font-weight: 400;
+    font-family: "Roboto", serif;
+}
+
+#input_register {
+    width: 100%;
+    height: 2.5rem;
+    outline: none;
+    border-radius: 5px;
+    border: 1.5px solid #898989;
+    font-size: 18px;
+    padding: 0 5px 0 8px;
+}
+
+#error_register {
+    font-size: 0.9rem;
+    color: #d30000;
+    margin-top: 5px;
+}
+
+#register_btn {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+
+#block_notify {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.block_notification {
+    width: 100%;
+    font-size: 16px!important;
+    text-align: center!important;
+    padding-top: 5px!important;
+}
+
+#back_signin {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+#back_signin-text {
+    font-size: 1.05rem;
+    
+}
+
+.css-gb418l-MuiButtonBase-root-MuiButton-root {
+    width: 13rem!important;
+    font-size: 1.15rem!important;
+    padding-top: 10px!important;
+}
+
+.back_signin-textLink {
+    color: #2b7ae1!important;
+    font-weight: 400!important;
+}
+
+.back_signin-textLink:active, .back_signin-textLink:hover {
+    color: #003d8e!important;
+}

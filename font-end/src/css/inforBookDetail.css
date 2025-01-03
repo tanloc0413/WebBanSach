@@ -1,0 +1,43 @@
+
+#review_infor {
+    width: 100%;
+    height: auto;
+    padding: 20px 22px 10px 22px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+#review_infor-title {
+    font-size: 1.45rem;
+    font-weight: 600;
+    font-family: "Roboto", serif;
+}
+
+#review_infor-block {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-top: 5px;
+}
+
+#review_cpn, #review_rlsDate, #review_size, #review_nPage, #review_coverType, #review_plgHouse {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 45% 55%;
+    gap: 5px;
+    padding: 12px 0;
+}
+
+#review_cpn, #review_rlsDate, #review_size, #review_nPage, #review_coverType {
+    border-bottom: 1.5px solid #ebebeb;
+}
+
+.review_infor-text {
+    font-size: 1.15rem;
+}
+
+.review_cpn-text, .review_rlsDate-text, .review_size-text, .review_coverType-text, .review_nPage-text, .review_plgHouse-text {
+    color: #9e9e9e;
+}

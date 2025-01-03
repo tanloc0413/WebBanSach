@@ -1,0 +1,255 @@
+#bookDetail {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    padding: 15px 10% 20px 10%;
+    flex-direction: column;
+}
+
+/* Block 0 */
+#bookDetail_block0 {
+    width: 100%;
+    height: auto;
+}
+
+.css-5cvx94-MuiTypography-root-MuiBreadcrumbs-root {
+    font-size: 1.17rem!important;
+    color: #a7a7a7!important;
+}
+
+.block0_home-text, .block0_book-text {
+    font-size: 1.17rem;
+    color: #8b8b8b!important;
+    text-transform: capitalize!important;
+    /* font-family: "Poppins", sans-serif!important; */
+}
+
+.block0_bookName-text {
+    font-size: 1.17rem!important;
+    color: #8b8b8b!important;
+    text-transform: capitalize!important;
+    /* font-family: "Poppins", sans-serif!important; */
+}
+
+.block0-text:hover, .block0-text:active {
+    text-decoration: underline!important;
+    cursor: pointer;
+}
+
+/* Block 1 */
+#bookDetail_block1  {
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+}
+
+#bookDetail_blk-infor {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    flex-direction: row;
+    column-gap: 10px;
+}
+
+/* Block 1 trái */
+#bdBlk1 {
+    width: 25%;
+    height: auto;
+}
+
+/* Block 2 giữa */
+#bdBlk2 {
+    width: 50%;
+    height: auto;
+}
+
+/* Block 3 phải */
+#bdBlk3 {
+    width: 25%;
+    height: auto;
+}
+
+#bdBlock2_review {
+    width: 100%;
+    height: auto;
+}
+
+/* Block tên */
+#review1 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    row-gap: 10px;
+    padding: 10px 20px 5px 20px;
+    border-radius: 10px;
+}
+
+#review_bookName {
+    font-size: 1.55rem;
+    font-weight: 500;
+    font-family: "Roboto", serif;
+}
+
+#review_nameAuthor {
+    font-size: 1.1rem;
+}
+
+#nameAuthor {
+    color: #0045e5;
+}
+
+#review_number {
+    width: 100%;
+    height: 1.3rem;
+}
+
+#review_number, #review_number-evalute  {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    column-gap: 5px;
+}
+
+#averageRating {
+    font-size: 1.3rem;
+    margin-top: 3px;
+}
+
+.evalute-start {
+    font-size: 1.5rem!important;
+    /* align-items: center; */
+}
+
+#numberReview-text {
+    font-size: 1.1rem;
+    /* text-align: center; */
+    margin-top: 3px;
+    color: #909090;
+    margin-left: 10px;
+}
+
+#review_symbol {
+    width: 2px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.5px 5px 0 5px;
+}
+
+#review_symbol-hr {
+    font-size: 1.5rem;
+    color: #909090;
+    font-weight: 300;
+    /* margin-top: 3px; */
+}
+
+#review_sold {
+    width: max-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#review_sold-text {
+    font-size: 1.2rem;
+    text-align: center;
+    /* margin-top: 2px; */
+    color: #909090;
+}
+
+#review_price {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    /* text-align: center; */
+    column-gap: 10px;
+}
+
+#review_price-text {
+    color: #e2000f;
+    font-size: 2.3rem;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.bdFormat {
+    font-size: 2rem;
+    text-align: end;
+}
+
+#review_listPrice-text {
+    font-size: 1.25rem;
+    text-decoration: line-through!important;
+    color: #8b8b8b;
+}
+
+#review_discount {
+    width: 3.8rem;
+    height: 1.8rem;
+    background-color: #e2000f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    margin-left: 10px;
+}
+
+#review_discount-text {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-family: "Roboto", serif;
+}
+
+#bdBlock2_infor {
+    margin-top: 15px;
+    background-color: #fff;
+}
+
+/* Block thông tin chi tiết */
+#review2 {
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+}
+
+/* Block mô tả */
+#review3 {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+#bookDetail_evaluate {
+    width: 100%;
+    height: auto; 
+}
+
+#loadingBD {
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loadingBD-text {
+    font-size: 2rem;
+}

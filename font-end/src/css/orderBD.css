@@ -1,0 +1,118 @@
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#order_block {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+#order_block-text {
+    width: 100%;
+    height: auto;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #cbcbcb;
+}
+
+#order_block-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: "Roboto", serif;
+}
+
+#order_addQuantity-text {
+    width: 100%;
+    margin-top: 15px;
+}
+
+#order_addQuantity-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-family: "Roboto", serif;
+}
+
+#order_addQuantity {
+    width: 100%;
+    height: auto;
+    /* margin-top: 5px; */
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 5px;
+    margin-top: 3px;
+}
+
+#order_addQuantity-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #fff;
+    border: 1px solid #000;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #929292;
+    border-radius: 5px;
+    color: #919191;
+}
+
+#order_addQuantity-input {
+    width: 3.5rem;
+    height: 2.5rem;
+    border-radius: 5px;
+    border: 1px solid #929292;
+    text-align: center;
+    outline: none;
+    font-size: 1.25rem;
+}
+
+#order_provisional {
+    margin-top: 20px;
+    text-align: start;
+}
+
+#order_provisional-text {
+    font-size: 1.05rem;
+    font-weight: 500;
+    font-family: "Roboto", serif;
+}
+
+#order_provisional-number {
+    margin-top: 5px;
+    font-size: 1.7rem;
+    text-align: start;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+}
+
+#order_bdBtn {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+#order_bdBtn-buyNow, #order_bdBtn-addCart {
+    font-size: 1.15rem;
+    border-radius: 5px;
+    padding: 8px 0;
+}
+
+#order_bdBtn-buyNow {
+    background-color: #ff2230;
+    color: #fff;
+}
+
+#order_bdBtn-addCart {
+    background-color: #fff;
+    border: 1.5px solid #2a91ff;
+    color: #2a91ff;
+}

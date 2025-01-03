@@ -1,0 +1,47 @@
+<div id='bdBlock1_avt-big'>
+                {imgSelecting && imgSelecting.dataImage && (
+                    <img
+                        // src={imgSelecting.dataImage}
+                        alt='ảnh bìa sách'
+                        id='bdBlock1_avt-img'
+                    />
+                )}
+                
+            </div>
+            <div id='bdBlock1_img-small'>
+                <div className='bdBlock1_img-small'>
+                    {/* <Carousel showArrows={true} showIndicators={true}> */}
+                        {
+                            listImgBook.map((image, index) => (
+                                <div
+                                    className='bdImg_block'
+                                    // key={index}
+                                    // onClick={() => imageSelect(image)}
+                                    // className={'carousel-item' + (index === 0 ? 'active' : '')}
+                                    key={index}
+                                    onClick={() => imageSelect(image)}
+                                >
+                                    <div className='bdImg_block-img'>
+                                        {/* <img 
+                                            src={image.dataImage}
+                                            alt={`${image.imageName}`}
+                                            className='bdImg-img'
+                                            // onClick={() => imageSelect(image)}
+                                        /> */}
+                                        {(image.dataImage) && 
+                                            (
+                                             <img 
+                                            src={image.dataImage}
+                                            alt={`${image.imageName}`}
+                                            className='bdImg-img'
+                                            onClick={() => imageSelect(image)}
+                                        />   
+                                            )
+                                        }
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    {/* </Carousel> */}
+                </div>
+            </div>

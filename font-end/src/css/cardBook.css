@@ -1,0 +1,176 @@
+#cardBook {
+    width: 13.5rem;
+    /* width: 15.5rem; */
+    height: auto;
+    background-color: #fff;  
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid #5c5c5c;
+}
+
+#cardBook_blk1 {
+    width: 100%;
+    height: 13.5rem;
+    overflow: hidden;
+    padding: 10px 15px 0 15px;
+}
+
+#cardBook_blk1-link, .cardBook_blk1-imgs {
+    width: 100%;
+    height: 100%;
+    /* margin-top: 5px 15px 0 15px; */
+}
+
+.cardBook_blk1-imgs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.cardBook_blk1-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+#numberEp {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #fff;
+    background-color: #000;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 5px 0.9rem;
+    border-radius: 5px;
+}
+
+/* Block 2 */
+#cardBook_blk2 {
+    margin-top: 5px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 12px 10px 12px;
+    /* flex: 1; */
+    /* flex-wrap: wrap; */
+    /* justify-content: space-between; */
+    /* padding: 0 15px 10px 15px; */
+}
+
+#cardBook_blk2-link {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 5px;
+}
+
+.cardBook_blk2-title {
+    font-size: 1rem;
+    color: #3a3a3a;
+    font-weight: 500;
+    font-family: "Roboto", serif;
+}
+
+#CBblock2_bookshelf {
+    display: flex;
+    /* justify-content: space-between; */
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 15px;
+}
+
+#CBblock2_bookshelf-price {
+    color: #c92127;
+    font-size: 1.45rem;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    align-items: end;
+}
+
+#CBblock2_bookshelf-listPrice {
+    color: #707070;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: line-through!important;
+    list-style: none;
+    margin-top: 3px;
+}
+
+#CBblock2_bookshelf-price, #CBblock2_bookshelf-listPrice {
+    user-select: none; /* Ngăn việc chọn nội dung */
+    -webkit-user-select: none; /* Cho trình duyệt WebKit (Chrome, Safari) */
+    -ms-user-select: none; /* Cho trình duyệt Microsoft Edge/IE */
+}
+
+
+#cardBook_blk2-shop {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    column-gap: 10px;
+    margin-top: auto;
+}
+
+#CBblk2_shop-icon1, #CBblk2_shop-icon2 {
+    width: 2.9rem;
+    height: 2.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#CBblk2_shop-icon1 {
+    color: #fff;
+    background-color: #64e459;
+    border: 1.8px solid #5b5b5b;
+}
+
+#CBblk2_shop-icon2 {
+    color: #000;
+    border: 1.8px solid #5b5b5b;
+}
+
+#CBblk2_shop-icon1:hover, #CBblk2_shop-icon1:active {
+    color: #fff;
+    background-color: #45af3b;
+}
+
+.shop-active {
+    background-color: #c32525!important;
+}
+
+.shop-active:active, .shop-active:hover {
+    background-color: #8b1b1b!important;
+}
+
+#CBblk2_shop-icon2:hover, #CBblk2_shop-icon2:active {
+    color: #fff;
+    background-color: #000;
+}
+
+#loadingDataImg, #errorImg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#loadingDataImg-text, #errorImg-text {
+    font-size: 20px;
+}

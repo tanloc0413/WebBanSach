@@ -1,0 +1,143 @@
+#cardNewBook {
+    width: 15rem;
+    height: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 8px 15px;
+}
+
+#cardNewBook:active, #cardNewBook:hover {
+    box-shadow: 0 4px 10px 1px #000;
+}
+
+#cardNewBook_blk1 {
+    width: 100%;
+    height: 11.5rem;
+    overflow: hidden;
+    /* background-color: antiquewhite; */
+}
+
+#cardNewBook_blk1-link {
+    width: 100%;
+    height: 100%;
+}
+
+.cardNewBook_blk1-imgs {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.cardNewBook_blk1-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+#numberEp {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #fff;
+    background-color: #000;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 5px 0.9rem;
+    border-radius: 5px;
+}
+
+/* Block 2 */
+#cardNewBook_blk2 {
+    height: 8.5rem;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 3px;
+}
+
+#cardNewBook_blk2-link {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 10px 0;
+}
+
+.cardNewBook_blk2-title {
+    font-size: 1.1rem;
+    color: #141414;
+    font-weight: 400;
+    font-family: "Roboto", serif;
+}
+
+#cardNewBook_blk2-bookshelf {
+    margin-top: 2%;
+}
+
+#blk2_bookshelf-price {
+    display: inline-flex;
+    column-gap: 25px;
+}
+
+#bookshelf_price {
+    color: #c92127;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+}
+
+#bookshelf_percents {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3px;
+}
+
+#bookshelf_percents-text {
+    color: #fff;
+    font-weight: 600;
+    background-color: #c92127;
+    padding: 4px 7.5px 3px 7.5px;
+    font-size: 0.85rem;
+    border-radius: 5px;
+    user-select: none;
+}
+
+#bookshelf_percent-text {
+    width: 100%;
+    height: 100%;
+}
+
+#blk2_bookshelf-listPrice {
+    color: #838383;
+    font-size: 1.15rem;
+    font-weight: 400;
+    text-decoration: line-through!important;
+}
+
+.currency-symbol {
+    font-size: 18px;
+    margin-left: -3px;
+}
+
+#loadingDataNew, #errorImgNew {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#loadingDataImgNew-text, #errorImg-text {
+    font-size: 20px;
+}

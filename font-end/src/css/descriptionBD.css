@@ -1,0 +1,49 @@
+#review_description {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px 25px 10px 25px;
+}
+
+#review_description-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+#review_description-block {
+    margin-top: 5px;
+}
+
+.review_description-show, .review_description-hidden {
+    font-size: 1.05rem;
+    word-break: break-word;
+    text-align: justify;
+}
+
+.review_description-show {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+#review_btn-block {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.review_btn-seeMore {
+    width: 7rem;
+    height: 2.5rem;
+    font-size: 16px;
+    background-color: #fff;
+    border: 1.5px solid #2a91ff;
+    color: #2a91ff;
+    border-radius: 5px;
+    font-weight: 400;
+    cursor: pointer;
+}
