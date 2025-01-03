@@ -20,26 +20,26 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         // Kiểm tra xem tài khoản admin đã tồn tại chưa
-        if (userRepository.findByUsername("admin") == null) {
-            // Mã hóa mật khẩu
-            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-            String encodedPassword = encoder.encode("12345");
-
-            // Tạo tài khoản admin
-            Users admin = new Users();
-            admin.setUsername("admin");
-            admin.setPassword(encodedPassword);
-            admin.setEmail("admin@gmail.com");
-            admin.setFirstName("Admin");
-            admin.setLastName("Admin");
-            admin.setNumberPhone("0379383465");
-            admin.setActivateAcc(true);
-
-            // Lưu tài khoản admin vào cơ sở dữ liệu
-            userRepository.save(admin);
-            logger.info("Tạo tài khoản admin thành công.");
-        } else {
-            logger.info("Tài khoản admin đã tồn tại.");
-        }
+//        if (userRepository.findByUsername("admin") == null) {
+//            // Mã hóa mật khẩu
+//            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//            String encodedPassword = encoder.encode("12345");
+//
+//            // Tạo tài khoản admin
+//            Users admin = new Users();
+//            admin.setUsername("admin");
+//            admin.setPassword(encodedPassword);
+//            admin.setEmail("admin@gmail.com");
+//            admin.setFirstName("Admin");
+//            admin.setLastName("Admin");
+//            admin.setNumberPhone("0379383465");
+//            admin.setActivateAcc(true);
+//
+//            // Lưu tài khoản admin vào cơ sở dữ liệu
+//            userRepository.save(admin);
+//            logger.info("Tạo tài khoản admin thành công.");
+//        } else {
+//            logger.info("Tài khoản admin đã tồn tại.");
+//        }
     }
 }

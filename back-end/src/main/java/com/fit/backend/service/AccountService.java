@@ -58,8 +58,8 @@ public class AccountService {
         String subject = "Kích hoạt tài khoản của bạn";
         String text = "Vui lòng nhấn vào mã sau để kích hoạt tài khoản <"+email+">: <html><body><br/><h2>"+activationCode+"<h2></html></body>";
         text += "<br/>Click vào đường link để kích hoạt tài khoản: ";
-//        String url = "http://localhost:3000/kich-hoat/" + email + "/" + activationCode;
-        String url = "http://localhost:3000/kich-hoat/" + activationCode;
+        String url = "http://localhost:3000/kich-hoat/" + email + "/" + activationCode;
+//        String url = "http://localhost:3000/kich-hoat/" + activationCode;
 //        String url = "http://localhost:3000/kich-hoat?email=" + email + "&activationCode=" + activationCode;
 
         text += ("<br/> <a href="+ url +">"+ url +"</a>");
