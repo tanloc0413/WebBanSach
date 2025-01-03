@@ -20,8 +20,8 @@ public class Order {
     @Column(name = "shipping_address")
     private String shippingAddress; // địa chỉ giao hàng
 
-    @Column(name = "purchase_address")
-    private String purchaseAddress; // địa chỉ mua hàng
+//    @Column(name = "purchase_address")
+//    private String purchaseAddress; // địa chỉ mua hàng
 
     @Column(name = "total_product")
     private double totalProduct; // tổng tiền sản phẩm
