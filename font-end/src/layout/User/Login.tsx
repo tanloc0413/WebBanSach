@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import '../../css/login.css';
 import GoogleIcon from '../../imgs/google.png';
@@ -12,53 +12,66 @@ const Login = () => {
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [success, setSuccess] = useState('');
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      navigate('/'); // Redirect to home if already logged in
+    }
+  }, [navigate]);
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const navigate = useNavigate();
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-  const handleLogin = () => {
     const loginRequest = {
       username: username,
-      password: password
-    }
-
+      password: password,
+    };
+  
     fetch('http://localhost:8080/tai-khoan/dang-nhap', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(loginRequest)
+      body: JSON.stringify(loginRequest),
     })
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      throw new Error('Đăng nhập không thành công!');
-    })
-    .then((data) => {
-      // xử lý đăng nhập thành công
-      const {jwt} = data;
-      // lưu token vào localStorage
-      localStorage.setItem('token', jwt);
-      // điều hướng về trang chủ
-      // navigate('/');
-    })
-    .catch((error) => {
-      console.error('Đăng nhập thất bại: ', error);
-      setError("Đăng nhập không thành công! Vui lòng kiểm tra username hoặc mật khẩu");
-    })
-  }
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Đăng nhập không thành công!');
+      })
+      .then((data) => {
+        const { jwt } = data;
+        // Lưu token vào localStorage
+        localStorage.setItem('token', jwt);
+  
+        // Hiển thị thông báo đăng nhập thành công và điều hướng
+        setSuccess('Đăng nhập thành công!');
+        setTimeout(() => {
+          // Chuyển về Trang chủ
+          navigate('/'); 
+          window.location.reload();
+        }, 1000);
+      })
+      .catch((error) => {
+        console.error('Đăng nhập thất bại: ', error);
+        setError('Đăng nhập không thành công! Vui lòng kiểm tra username hoặc mật khẩu');
+      });
+  };
+  
 
 
   return (
     <div id="login">
       <div className="login-form">
         <p className='login-title'>Đăng nhập</p>
-        <form id='form-blockLogin'>
+        <form id='form-blockLogin' onSubmit={handleLogin}>
           <div className="input-box">
             <label htmlFor="username" className='login_input-text'>Username</label>
             <input
@@ -96,7 +109,6 @@ const Login = () => {
               type="submit"
               value="login"
               className='login-btn'
-              onClick={handleLogin}
             >
               Đăng nhập
             </button>

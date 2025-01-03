@@ -12,6 +12,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import '../../css/header.css';
 import LogoIcon from '../../imgs/logo-web.png';
 import { Link, useNavigate } from 'react-router-dom';
+import { useCart } from '../Cart/CartContext';
 
 interface AppProps {
   searchKeyword: string;
@@ -21,9 +22,11 @@ interface AppProps {
 function Header({searchKeyword, setSearchKeyword}: AppProps) {
   const navigate = useNavigate();
   const[tprKeyword, setTprKeyword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
+  const [showLogout, setShowLogout] = useState(false);
+  const { cart } = useCart();
 
-
+  
   // const [categoryName, setCategoryName] = useState('');
   const settings = [
     {
@@ -56,18 +59,24 @@ function Header({searchKeyword, setSearchKeyword}: AppProps) {
     }
   };
 
+  // đăng nhập
+  useEffect(() => {
+    // Cập nhật trạng thái nếu token thay đổi
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
+  }, []);
+  
+  // đăng xuất
   const handleLogout = () => {
     localStorage.removeItem('token');
     setIsLoggedIn(false);
+    window.location.reload();
   };
 
-  useEffect(() => {
-    // Kiểm tra xem token đã lưu trong localStorage chưa
-    const token = localStorage.getItem('token');
-    if (token) {
-      setIsLoggedIn(true);
-    }
-  }, []);
+  const handleShowLogout = () => {
+    setShowLogout(!showLogout);
+  };
+
   
 
   return (
@@ -101,22 +110,36 @@ function Header({searchKeyword, setSearchKeyword}: AppProps) {
           <a className='cart blk_user-icon' href='/gio-hang'>
             <IoCartOutline className='cart-icon user-icon'/>
             <p className='cart-text title_text-icons'>Giỏ Hàng</p>
+            <p>({cart.reduce((total, item) => total + item.quantity, 0)})</p>
           </a>
           {/* <div className='account blk_user-icon'>
             <FaRegUser className='account-icon user-icon'/>
             <p className='account-text title_text-icons'>Tài Khoản</p>
           </div> */}
+          {/* 
+            // <div id='block_header-account'>
+            <Link to='/dang-ky' className='button_signup'>
+              Đăng Ký
+              
+            </Link> 
+          </div> */}
           {!isLoggedIn ? (
-            <Link to='/dang-nhap' className='login-button'>
+            <Link to='/dang-nhap' className='button_login'>
               Đăng Nhập
             </Link>
           ) : (
-            <div className='account blk_user-icon'>
-              <FaRegUser className='account-icon user-icon' />
-              <p className='account-text title_text-icons'>Tài Khoản</p>
-              <button onClick={handleLogout} className='logout-button'>
-                Đăng Xuất
-              </button>
+            <div>
+              <div className='account blk_user-icon' onClick={handleShowLogout}>
+                <FaRegUser className='account-icon user-icon' />
+                <p className='account-text title_text-icons'>Tài Khoản</p>
+              </div>
+              {showLogout && (
+                <div id='block_header-account'>
+                  <button onClick={handleLogout} className='logout-button'>
+                    Đăng Xuất
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -128,8 +151,8 @@ function Header({searchKeyword, setSearchKeyword}: AppProps) {
               <Nav.Link href="/">
                 <i className="fa-solid fa-house house-icon"></i>
               </Nav.Link>
-              <Nav.Link href="/sach" className='nav_link-text'>Tất cả sách</Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <Nav.Link href="/sach" className='nav_link-text'>Sách</Nav.Link>
+              <NavDropdown title="Thể Loại Sách" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
                   Another action

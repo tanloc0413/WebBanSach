@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import '../../css/orderBD.css';
 import { formatCurrencyBD } from '../../models/FormatMoney';
+// import { useCart } from '../Cart/CartContext';
 
 interface BookProps {
     bookId: number;
@@ -12,6 +13,7 @@ interface BookProps {
 
 const OrderBD: React.FC<BookProps> = ({ currentQuantity, priceNumber }) => {
     const [quantity, setQuantity] = useState(1);
+    // const { addToCart } = useCart();
 
     // tăng số lượng
     const increaseQuantity = () => {
@@ -42,7 +44,7 @@ const OrderBD: React.FC<BookProps> = ({ currentQuantity, priceNumber }) => {
     // thêm vào giỏ hàng
     const handleAddCart = () => {
 
-    }
+    };
 
     // mua ngay
     const handleBuyNow = () => {

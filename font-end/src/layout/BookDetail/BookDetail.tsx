@@ -19,6 +19,7 @@ import ImgBookDetail from './ImgBookDetail';
 import FormatNumber from './FormatNumber';
 import AuthorModel from '../../models/AuthorModel';
 import { getAuthorName } from '../../api/AuthorAPI';
+import { useCart } from '../Cart/CartContext';
 
 const BookDetail:React.FC = () => {
   // danh sách về sách

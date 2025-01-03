@@ -4,24 +4,27 @@ import Header from './layout/Header/Header';
 import Footer from './layout/Footer/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
+import { CartProvider } from './layout/Cart/CartContext';
 
 function App() {
   const [searchKeyword, setSearchKeyword] = useState('');
   
 
   return (
-    <div className="App">
-      <Header
-        searchKeyword={searchKeyword}
-        setSearchKeyword={setSearchKeyword}
-      />
-      <div id='app-container'>
-        <RoutePage
+    <CartProvider>
+      <div className="App">
+        <Header
           searchKeyword={searchKeyword}
+          setSearchKeyword={setSearchKeyword}
         />
+        <div id='app-container'>
+          <RoutePage
+            searchKeyword={searchKeyword}
+          />
+        </div>
+        <Footer/>
       </div>
-      <Footer/>
-    </div>
+    </CartProvider>
   );
 }
 

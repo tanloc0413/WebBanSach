@@ -8,6 +8,7 @@ import { FiMoreVertical } from "react-icons/fi";
 import '../../css/evaluateBD.css';
 import { getEvaluateOfTheBook } from '../../api/EvaluateAPI';
 import EvaluateModel from '../../models/EvaluateModel';
+import { deleteEvaluate } from '../../models/Evaluate';
 
 
 interface BookProps {
@@ -35,12 +36,22 @@ const EvaluateBD: React.FC<BookProps> = (props) => {
         })
     }, []);
 
+    // const handleDelete = (evaluateId: number) => {
+    //     deleteEvaluate(evaluateId)
+    //     .then(() => {
+    //       setListEvaluate(prevList => prevList.filter(evaluate => evaluate.id !== evaluateId));
+    //     })
+    //     .catch(error => {
+    //       console.error("Lỗi khi xóa đánh giá:", error);
+    //     });
+    // };
+
 
     if(loading) {
         return (
           <div id='loadingData'>
             <p id='loadingDataImg-text'>
-              Đang tải dữ liệu của sách!
+              Đang tải dữ liệu!
             </p>
 
           </div>

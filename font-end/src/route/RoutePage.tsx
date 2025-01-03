@@ -10,6 +10,7 @@ import ActivateAccount from '../layout/User/ActivateAccount';
 import BookFormForAdmin from '../layout/Admin/BookForm';
 import TestLogin from '../layout/User/TestLogin';
 import { useEffect } from 'react';
+import Cart from '../layout/Cart/Cart';
 
 interface RoutePageProps {
   searchKeyword: string;
@@ -70,6 +71,10 @@ export default function RoutePage({ searchKeyword }: RoutePageProps) {
       <Route
         path='/admin/them-sach'
         element={<BookFormForAdmin/>}
+      />
+      <Route
+        path='/gio-hang'
+        element={<Cart/>}
       />
       <Route
         path='/test'

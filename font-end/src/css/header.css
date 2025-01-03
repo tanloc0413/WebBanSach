@@ -184,3 +184,41 @@
     text-transform: capitalize;
     font-size: 18px;
 }
+
+#block_header-account {
+    width: 10rem;
+    background-color: #fff;
+    position: absolute;
+    z-index: 1;
+    border-radius: 5px;
+    padding: 10px 5px;
+    top: 75px;
+    right: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1.5px solid #7f7f7f;
+}
+
+.logout-button {
+    width: 100%;
+    font-size: 1.1rem;
+    background-color: #fff;
+}
+
+.button_login, .button_signup {
+    width: auto;
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #318aff;
+    border-radius: 5px;
+    color: #318aff!important;
+}
+
+#block_header-account {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5px;
+}
