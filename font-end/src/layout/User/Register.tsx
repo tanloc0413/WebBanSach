@@ -224,8 +224,6 @@ function Register() {
                 });
 
                 if (response.ok) {
-                    setNotify('Đăng ký tài khoản thành công!');
-                    setErrorNotify('');
                     // Clear form
                     setUsername('');
                     setPassword('');
@@ -235,14 +233,15 @@ function Register() {
                     setFirstName('');
                     setSex('nam');
                     setNumberPhone('');
-                    
+                    setNotify('Đăng ký tài khoản thành công!');
+                    setErrorNotify('');
                 } else {
                     setNotify('');
-                    setErrorNotify('Đã xảy ra lỗi trong quá trình đăng ký!');
+                    setErrorNotify('Đăng ký không thành công! Vui lòng kiểm tra email để kích hoạt tài khoản!');
                 }
             } catch (error) {
                 setNotify('');
-                setErrorNotify('Đăng ký không thành công! Vui lòng kiểm tra email để kích hoạt tài khoản!');
+                setErrorNotify('Đã xảy ra lỗi trong quá trình đăng ký!');
             }
         }
     };

@@ -6,7 +6,7 @@ import '../../css/activateAcc.css';
 function ActivateAccount() {
     const [email, setEmail] = useState('');
     const [activationCode, setActivationCode] = useState('');
-    const [activated, setActivatedAcc] = useState(true);
+    const [activated, setActivatedAcc] = useState(false);
     const [notify, setNotify] = useState('');
 
     const navigate = useNavigate();
