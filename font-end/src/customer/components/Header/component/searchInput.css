@@ -1,0 +1,25 @@
+.css-qzbt6i-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-popupIndicator, 
+.css-z0g2be-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-popupIndicator {
+    display: none!important;
+}
+
+/* .css-1gsu57t-MuiPopper-root-MuiAutocomplete-popper */
+
+.css-ncen7l-MuiFormControl-root-MuiTextField-root {
+    width: 500px!important;
+    /* height: 2.5rem!important; */
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;
+}
+
+.css-ittuaa-MuiInputAdornment-root {
+    margin-right: 5px!important;
+    margin-left: 5px!important;
+}
+
+#combo-box-demo {
+    height: 1.7rem!important;
+    font-size: 18px!important;
+    padding-left: 0!important;
+}

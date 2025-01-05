@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0!important;
+    font-family: "Quicksand", sans-serif;
+}
+
+ul {
+    padding-left: 0;
+    margin-bottom: 0;
+
+}
+
+p {
+    margin-bottom: 0;
+    display: block!important;
+}
+
+.container-products {
+    height: auto;
+}
+
+.container-products, .accessorys, .div__blogs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.div__title {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.title-accessory {
+    font-size: 24px;
+    margin: 0 0 8px;
+    font-weight: 700;
+    color: #ffffff;
+    display: inline-block;
+    min-width: 70%;
+    background: #0f1230;
+    box-shadow: 0px 0px 0px 2px rgba(15, 18, 48, 0.8);
+    padding: 8px 15px 10px;
+    border-radius: 50px;
+}
+
+.div__lists, .blogs {
+    display: flex;
+    
+    margin-bottom: 40px;
+}
+
+.div__lists {
+    padding: 3% 0;
+}
+
+.div__lists-iphone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.lists-iphone {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 18px;
+}
+
+.button__seeMore {
+    margin-top: 2%;
+    font-size: 17px;
+    font-weight: 500;
+    font-family: "Quicksand", sans-serif;
+    padding: 15px 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1.3px solid #0f1230;
+}
+
+.button__seeMore:hover {
+    background-color: #0f1230;
+    color: #fff;
+}
+
+.card-image {
+    width: 100%;
+    height: 18rem;
+    overflow: hidden;
+}
+
+.card-img-top {
+    width: auto;
+    height: 100%;
+    scale: 90%;
+    transition: transform 0.3s ease;
+}
+
+.card-body {
+    border-top: 2px #dee2e6 solid;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.1);
+}
+
+.card-text {
+    justify-content: start;
+    margin-bottom: 0;
+}
+
+.card-product {
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-trademark {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #939393;
+}
+
+.card-title {
+    font-size: 14px;
+    margin-bottom: 0;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.card-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.card__text-price {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.card__text-cost {
+    font-size: 14px;
+    text-decoration: line-through;
+    color: #858585;
+}
+
+.div__banners {
+    height: 20rem;
+    margin-top: -2%;
+    margin-bottom: 3%;
+}
+
+.banners {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.img-banners {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+}
+
+.img-banners:hover {
+    transform: scale(1.1);
+}
+
+.blogs {
+    justify-content: start;
+    align-items: start;
+    background-color: #fff;
+    padding: 30px 20px 30px 20px;
+    flex-direction: column;
+}
+
+.div-title {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.blog-title {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.div__list-blogs {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    margin-top: 30px;
+}
+
+.list-blogs {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.blog-contents {
+    height: auto;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: row;
+}
+
+.blog-imgs {
+    width: 80px;
+}
+
+.div__button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.img__blog-content {
+    padding: 5px 10px 10px 20px;
+}
+
+.blog-dct {
+    font-size: 14px;
+    color: #000;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.blog-dct:active {
+    color: #00a6ff;
+}
+
+.blog-date {
+    color: #858585;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.button-seeMore {
+    width: 12rem;
+    height: 65px;
+    font-size: 20px;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 600;
+}

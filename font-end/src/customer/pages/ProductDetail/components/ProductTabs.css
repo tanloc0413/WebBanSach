@@ -1,0 +1,68 @@
+.cps-block-content {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .1), 0 2px 6px 2px rgba(60, 64, 67, .15);
+    display: block;
+    margin-bottom: 15px;
+    margin-right: auto;
+    max-height: 500px;
+    min-height: 0;
+    overflow: hidden;
+    padding: 15px;
+    position: relative;
+    text-align: justify;
+    width: 100%;
+}
+.cps-block-content .ksp-content {
+    background-color: #f2f2f2;
+    border-radius: .5rem;
+    margin: auto;
+    width: 100%;
+}
+.cps-block-content .ksp-content .ksp-title {
+    color: #d70018;
+    font-size: 18px;
+    font-weight: 600;
+}
+.cps-block-content .ksp-content ul {
+    -ms-overflow-style: none;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+.cps-block-content .ksp-content ul li:not(:last-child) {
+    margin-bottom: 5px;
+}
+.cps-block-content .ksp-content ul li {
+    display: flex;
+    font-size: 14px;
+    line-height: 1.45;
+    text-align: left;
+}
+.cps-block-content .ksp-content ul li:before {
+    align-items: center;
+    color: #000;
+    content: "•";
+    display: flex;
+    font-size: 20px;
+    height: 22px;
+    margin-right: 5px;
+    width: auto;
+}
+.cps-block-content h2 {
+    font-size: 21px;
+}
+strong {
+    color: #363636;
+    font-weight: 700;
+}
+.cps-block-content p {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0 0 10px;
+}
+.cps-block-content h3 {
+    font-size: 16px;
+    font-weight: 700;
+    padding: 8px 0;
+}

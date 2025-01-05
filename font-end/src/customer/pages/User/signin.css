@@ -1,0 +1,68 @@
+#block-signin {
+    width: 100vw;
+    height: 100vh;
+    /* background-color: #f4f4f4; */
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+}
+
+#header-signin {
+    width: 100%;
+}
+
+#container-signin {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("https://images8.alphacoders.com/451/thumb-1920-451001.jpg");
+    background-size: cover;
+}
+
+.form_blk-signin {
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.google-icon, .fb-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.text-question {
+    font-size: 14px;
+}
+
+.css-ijul54-MuiTypography-root {
+    margin-bottom: 0!important;
+    margin-top: 30px!important;
+}
+
+.css-1sfbpg5 {
+    margin-top: 0!important;
+}
+
+.css-1vhaqj4-MuiButtonBase-root-MuiButton-root {
+    margin-top: 15px!important;
+}
+
+@media (min-width: 0px) {
+    .css-nzinn5-MuiContainer-root {
+        max-width: 500px!important;
+    }
+}
+
+@media (min-width: 600px) {
+    .css-nzinn5-MuiContainer-root {
+        padding-left: 30px!important;
+        padding-right: 30px!important;
+    }
+}
+
+.css-nzinn5-MuiContainer-root {
+    padding: 30px 0 10px 0;
+    display: flex;
+}

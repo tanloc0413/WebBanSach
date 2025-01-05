@@ -1,14 +1,8 @@
-html, body {
-  width: 100vw;
-  height: 100vh;
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: #f8f6f0;
+html {
+  background-color: rgb(244, 244, 244);
 }
-
 body {
+  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -19,13 +13,4 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-input[type="search"]::-webkit-search-cancel-button {
-  -webkit-appearance: none;
-}
-
-p {
-  margin: 0;
-  padding: 0;
 }

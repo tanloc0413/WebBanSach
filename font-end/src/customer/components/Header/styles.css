@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+#header {
+    width: 100%;
+    height: auto;
+    background-color: #0f1f30;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.css-7e0s21-MuiPaper-root-MuiAppBar-root {
+    background-color: #3487df!important;
+}
+
+#header_blk {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4%;
+}
+
+#header1, #header2, #header3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#header1 {
+    width: 35%;
+    justify-content: start;
+}
+
+#header2 {
+    width: 100%;
+    justify-content: center;
+}
+
+#header3 {
+    width: 25%;
+    justify-content: end;
+}
+
+.header__content {
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 15px 0;
+}
+
+.logo__text {
+    background-image: linear-gradient(to right, #ffc400, #feb47b);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.search__image, .cart__image, .user__image, .menu__image {
+    width: 30px;
+    height: 30px;
+    filter: brightness(0) invert(100%);
+}
+
+/* Tìm Kiếm */
+.header__search {
+    width: 100%;
+    height: auto;
+}
+
+.header__input--search {
+    width: 100%;
+    height: 50px;   
+}
+
+.search__image {
+    position: absolute;
+    filter: brightness(0);
+}
+
+#header_home {
+    margin-left: 4.8rem;
+    /* margin-right: 4%; */
+}
+
+.header_home-text {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 20px;
+    /* background: linear-gradient(180deg, #ff3300, #ff00bb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    color: #fff;
+}
+
+.css-i4bv87-MuiSvgIcon-root {
+    width: 1.3em!important;
+    height: 1.3em!important;
+}
+
+.css-1d159sf-MuiSvgIcon-root {
+    width: 1.5em!important;
+    height: 1.5em!important;
+    margin-left: 25px!important;
+}
+
+.css-7e0s21-MuiPaper-root-MuiAppBar-root {
+    padding: 1.5px!important;
+}

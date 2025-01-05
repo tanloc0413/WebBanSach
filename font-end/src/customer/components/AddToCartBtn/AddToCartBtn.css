@@ -1,0 +1,38 @@
+ .btn-group_quantity {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    border: solid 1px #f3f4f4;
+    transition: border 0.3s ease;
+    margin: 20px 0px;
+    width: 130px;
+    gap:15px;
+  }
+  
+  .btn-group_quantity button {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3f4f4;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 23px;
+  }
+  
+  /* button:hover {
+      background-color: #f3f9ff;
+  } */
+  
+  /* p {
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid #F5F8FB;
+    border-right: 1px solid #F5F8FB;
+  } */
